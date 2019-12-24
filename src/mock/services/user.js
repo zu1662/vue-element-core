@@ -8,7 +8,7 @@ const info = (options) => {
     name: 'huazi',
     username: 'admin',
     password: '',
-    avatar: '/avatar2.jpg',
+    avatar: 'https://gw.alipayobjects.com/zos/rmsportal/jZUIxmJycoymBprLOUbT.png',
     status: 1,
     telephone: '',
     lastLoginIp: '27.154.74.117',

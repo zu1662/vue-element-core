@@ -2,7 +2,7 @@
  * @Author: zu1662
  * @LastEditor: zu1662
  * @Date: 2019-12-16 16:26:12
- * @LastEditTime: 2019-12-17 15:17:09
+ * @LastEditTime: 2019-12-24 13:15:41
  * @Description: axios request封装
  */
 import Vue from 'vue'
@@ -29,7 +29,7 @@ const err = (error) => {
         message: data.message
       })
     }
-    if (error.response.status === 401 && !(data.result && data.result.isLogin)) {
+    if (error.response.status === 401) {
       Notification.error({
         title: 'Unauthorized',
         message: 'Authorization verification failed'
@@ -63,6 +63,12 @@ service.interceptors.response.use((response) => {
   return response.data
 }, err)
 
+const AxiosPlugin = {}
+AxiosPlugin.install = (Vue) => {
+  Vue.prototype.$http = service
+}
+
 export {
-  service
+  service,
+  AxiosPlugin
 }

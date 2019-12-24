@@ -19,54 +19,65 @@ export const constantRouterMap = [
   {
     path: '/404',
     component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404')
+  },
+  {
+    path: '/',
+    redirect: '/dashboard'
   }
 
 ]
 
 export const asyncRouterMap = [
 
-  // dashboard
   {
-    path: '/dashboard',
-    name: 'dashboard',
+    path: '/',
     redirect: '/dashboard/index',
     component: Layout,
-    meta: { title: '主页', keepAlive: true, icon: 'aaa', permissionCode: 'dashboard' },
     children: [
+      // dashboard
       {
-        path: '/dashboard/index',
-        name: 'index',
-        component: () => import('@/views/dashboard/index'),
-        meta: { title: '工作台', keepAlive: true, permissionCode: 'dashboard:index' }
-      }
-    ]
-  },
+        path: '/dashboard',
+        name: 'dashboard',
+        redirect: '/dashboard/index',
+        component: Layout,
+        meta: { title: '主页', keepAlive: true, icon: 'aaa', permissionCode: 'dashboard' },
+        children: [
+          {
+            path: '/dashboard/index',
+            name: 'index',
+            component: () => import('@/views/dashboard/index'),
+            meta: { title: '工作台', keepAlive: true, permissionCode: 'dashboard:index' }
+          }
+        ]
+      },
 
-  // Exception
-  {
-    path: '/exception',
-    name: 'exception',
-    component: Layout,
-    redirect: '/exception/403',
-    meta: { title: '异常页', icon: 'warning', permissionCode: 'exception' },
-    children: [
+      // Exception
       {
-        path: '/exception/403',
-        name: 'Exception403',
-        component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/403'),
-        meta: { title: '403', permissionCode: 'exception:403' }
-      },
-      {
-        path: '/exception/404',
-        name: 'Exception404',
-        component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404'),
-        meta: { title: '404', permissionCode: 'exception:404' }
-      },
-      {
-        path: '/exception/500',
-        name: 'Exception500',
-        component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/500'),
-        meta: { title: '500', permissionCode: 'exception:500' }
+        path: '/exception',
+        name: 'exception',
+        component: Layout,
+        redirect: '/exception/403',
+        meta: { title: '异常页', icon: 'warning', permissionCode: 'exception' },
+        children: [
+          {
+            path: '/exception/403',
+            name: 'Exception403',
+            component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/403'),
+            meta: { title: '403', permissionCode: 'exception:403' }
+          },
+          {
+            path: '/exception/404',
+            name: 'Exception404',
+            component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404'),
+            meta: { title: '404', permissionCode: 'exception:404' }
+          },
+          {
+            path: '/exception/500',
+            name: 'Exception500',
+            component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/500'),
+            meta: { title: '500', permissionCode: 'exception:500' }
+          }
+        ]
       }
     ]
   },

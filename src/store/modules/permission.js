@@ -8,10 +8,10 @@ import { asyncRouterMap, constantRouterMap } from '@/router/router'
 function getRouterPermission (permissions, route) {
   for (let i = 0, len = permissions.length; i < len; i++) {
     if (route.meta.permissionCode === permissions[i].code) {
-      if (permissions[i].status === '1') {
+      if (permissions[i].status === 1) {
         return true
       }
-    } else if (permissions[i].children && permissions[i].type < 1) {
+    } else if (permissions[i].children && permissions[i].type <= 1) {
       const nextFlag = getRouterPermission(permissions[i].children, route)
       if (nextFlag) return true
     }
@@ -27,6 +27,7 @@ function getRouterPermission (permissions, route) {
 function hasPermission (permissions, route) {
   if (route.meta && route.meta.permissionCode) {
     const flag = getRouterPermission(permissions, route)
+    console.log('flag', flag)
     return flag
   }
   return true

@@ -21,12 +21,14 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 // custom components
 import '@/icons'
+import { AxiosPlugin } from '@/utils/request'
 
 Vue.config.productionTip = false
 
 Vue.use(PerssionPlugin)
 Vue.use(ElementUI)
 Vue.use(VueStorage, storageOptions)
+Vue.use(AxiosPlugin)
 
 new Vue({
   router,

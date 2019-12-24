@@ -4,7 +4,7 @@ const getters = {
   nickname: state => state.user.name,
   permissions: state => state.user.permissions,
   userInfo: state => state.user.info,
-  // addRouters: state => state.permission.addRouters,
+  addRouters: state => state.permission.addRouters,
   lang: state => state.i18n.lang
 }
 
