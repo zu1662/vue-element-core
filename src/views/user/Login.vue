@@ -106,7 +106,10 @@ export default {
             })
           }
         }).catch(err => {
-          console.log(err)
+          this.$notify.error({
+            title: '错误',
+            message: err
+          })
         }).finally(() => {
           this.submitting = false
         })
