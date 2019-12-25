@@ -57,7 +57,7 @@ export const asyncRouterMap = [
         name: 'exception',
         component: Layout,
         redirect: '/exception/403',
-        meta: { title: '异常页', permissionCode: 'exception' },
+        meta: { title: '异常页', icon: 'dashboard', permissionCode: 'exception' },
         children: [
           {
             path: '/exception/403',

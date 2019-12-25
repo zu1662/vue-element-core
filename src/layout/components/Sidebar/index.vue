@@ -1,10 +1,9 @@
 <template>
   <div class="slider-bar">
-    <div>{{variables['sidebar-menu-bg']}}</div>
     <logo :collapse="false"/>
     <el-menu
       class="el-menu-vertical-demo"
-      :background-color="variables['sidebar-menu-bg']"
+      :background-color="'#304156'"
       :text-color="'#fff'"
     >
       <sidebar-item
@@ -18,7 +17,6 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import variables from '@/styles/var.less'
 
 import Logo from './Logo.vue'
 import SidebarItem from './SidebarItem'
@@ -31,10 +29,7 @@ export default {
   computed: {
     ...mapGetters([
       'routers'
-    ]),
-    variables () {
-      return variables
-    }
+    ])
   },
   data () {
     return {

@@ -44,7 +44,16 @@ const vueConfig = {
       })
       .end()
   },
-
+  pluginOptions: {
+    // 在每个组件内引入全局less变量
+    'style-resources-loader': {
+      preProcessor: 'less',
+      patterns: [
+        // 全局变量路径
+        path.resolve(__dirname, './src/styles/var.less')
+      ]
+    }
+  },
   css: {
     loaderOptions: {
       less: {

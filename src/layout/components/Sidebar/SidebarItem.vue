@@ -89,8 +89,6 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-  @import '~@/styles/var.less';
-
   .svg-icon {
     margin-right: 1rem;
   }
