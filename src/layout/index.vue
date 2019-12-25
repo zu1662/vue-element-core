@@ -1,10 +1,22 @@
 <template>
   <el-container>
-    <el-aside width="200px">Aside</el-aside>
-    <el-container>
-      <el-header>Header</el-header>
-      <el-main>Main</el-main>
-      <el-footer>Footer</el-footer>
-    </el-container>
+    <el-aside>
+      <sidebar></sidebar>
+    </el-aside>
   </el-container>
 </template>
+<script>
+import Sidebar from './components/Sidebar'
+export default {
+  name: 'Layout',
+  components: {
+    Sidebar
+  },
+  data () {
+    return {
+      fixedHeader: false,
+      showTagsView: false
+    }
+  }
+}
+</script>

@@ -36,7 +36,7 @@ const vueConfig = {
       .loader('svgo-loader')
       .options({
         plugins: [
-          { removeAttrs: { attrs: 'fill' } }, // 有些svg会存在fill颜色， 移除 svg 中的 fill 属性
+          // { removeAttrs: { attrs: 'fill' } }, // 有些svg会存在fill颜色， 移除 svg 中的 fill 属性
           { removeTitle: true },
           { convertColors: { shorthex: false } },
           { convertPathData: false }

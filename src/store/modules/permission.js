@@ -27,7 +27,6 @@ function getRouterPermission (permissions, route) {
 function hasPermission (permissions, route) {
   if (route.meta && route.meta.permissionCode) {
     const flag = getRouterPermission(permissions, route)
-    console.log('flag', flag)
     return flag
   }
   return true

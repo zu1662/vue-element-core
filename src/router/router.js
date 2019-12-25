@@ -1,5 +1,6 @@
 /* Layout */
 import Layout from '@/layout'
+
 /**
  * 基础路由
  * @type { *[] }
@@ -19,14 +20,13 @@ export const constantRouterMap = [
   {
     path: '/404',
     component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404')
-  },
-  {
-    path: '/',
-    redirect: '/dashboard'
   }
-
 ]
 
+/**
+ * 动态路由
+ * @type { *[] }
+ */
 export const asyncRouterMap = [
 
   {
@@ -40,13 +40,13 @@ export const asyncRouterMap = [
         name: 'dashboard',
         redirect: '/dashboard/index',
         component: Layout,
-        meta: { title: '主页', keepAlive: true, icon: 'aaa', permissionCode: 'dashboard' },
+        meta: { title: '主页', keepAlive: true, permissionCode: 'dashboard' },
         children: [
           {
             path: '/dashboard/index',
             name: 'index',
             component: () => import('@/views/dashboard/index'),
-            meta: { title: '工作台', keepAlive: true, permissionCode: 'dashboard:index' }
+            meta: { title: '工作台', keepAlive: true, icon: 'dashboard', permissionCode: 'dashboard:index' }
           }
         ]
       },
@@ -57,7 +57,7 @@ export const asyncRouterMap = [
         name: 'exception',
         component: Layout,
         redirect: '/exception/403',
-        meta: { title: '异常页', icon: 'warning', permissionCode: 'exception' },
+        meta: { title: '异常页', permissionCode: 'exception' },
         children: [
           {
             path: '/exception/403',
