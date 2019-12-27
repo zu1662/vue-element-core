@@ -19,3 +19,23 @@ html ,body{
     height: 0;
   }
 }
+
+.row-transition {
+  transition: 0.3s width ease-in-out, 0.3s padding-left ease-in-out, 0.3s padding-right ease-in-out;
+}
+.horizontal-collapse-transition {
+  transition: 0.3s width ease-in-out, 0.3s padding-left ease-in-out, 0.3s padding-right ease-in-out;
+}
+
+.el-list-enter-active,
+.el-list-leave-active {
+  transition: all 1s;
+}
+.el-list-enter, .el-list-leave-active {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.el-opacity-transition {
+  transition: opacity .3s cubic-bezier(.55,0,.1,1);
+}

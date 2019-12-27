@@ -1,18 +1,18 @@
 <template>
-  <el-container>
-    <el-aside width="256" v-if="layoutMode === 'sidebar'">
-      <sidebar :layoutMode="layoutMode"></sidebar>
-    </el-aside>
-    <el-container>
-      <el-header class="header" :class="{'topmenu-header': layoutMode === 'topmenu'}">
-        <global-header :layoutMode="layoutMode"></global-header>
-      </el-header>
-      <el-main></el-main>
-    </el-container>
+  <section class="app-container">
+    <div class="app-aside" :class="{'collapse': collapsed}" v-if="layoutMode === 'sidebar'">
+      <sidebar :collapsed="collapsed" :layoutMode="layoutMode"></sidebar>
+    </div>
+    <div class="app-container">
+      <div class="app-header" :class="{'topmenu-header': layoutMode === 'topmenu'}">
+        <global-header :collapsed="collapsed" :layoutMode="layoutMode" @sidebarToggle="sidebarToggle"></global-header>
+      </div>
+      <div class="app-main"></div>
+    </div>
     <right-panel>
       <setting/>
     </right-panel>
-  </el-container>
+  </section>
 </template>
 <script>
 import { mapState } from 'vuex'
@@ -31,7 +31,8 @@ export default {
   },
   computed: {
     ...mapState({
-      layoutMode: state => state.app.layout || 'sidebar'
+      layoutMode: state => state.app.layout || 'sidebar',
+      collapsed: state => state.app.collapsed
     })
   },
   data () {
@@ -39,15 +40,32 @@ export default {
       fixedHeader: false,
       showTagsView: false
     }
+  },
+  methods: {
+    sidebarToggle () {
+      this.$store.dispatch('setSidebarType', !this.collapsed)
+    }
   }
 }
 </script>
 <style lang="less" scoped>
-  .header {
-    box-shadow: @shadow-down;
-    &.topmenu-header {
-      height: @header-height !important;
-      background-color: @sidebar-bg;
+  .app-container {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    height: 100%;
+
+    .app-aside {
+      flex-shrink: 0;
+      width: @sidebar-width;
+      &.collapse {
+        width: @sidebar-collapse-width;
+      }
+    }
+    .app-header {
+      flex: 1;
+      height: @header-height;
+      box-shadow: @shadow-down;
     }
   }
 </style>

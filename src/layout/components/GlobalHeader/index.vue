@@ -1,7 +1,9 @@
 <template>
   <transition name="showHeader">
     <div class="global-header" v-if="layoutMode === 'sidebar'">
-      <svg-icon :name="collapsed ? 'menu-fold': 'menu-unfold'" class="menu-trigger"></svg-icon>
+      <div class="header-Hamburger" @click="handleSidebarToggle">
+        <svg-icon :name="collapsed ? 'menu-unfold': 'menu-fold'" class="menu-trigger"></svg-icon>
+      </div>
       <user-menu></user-menu>
     </div>
     <div class="global-header topmenu-header" v-else>
@@ -28,8 +30,12 @@ export default {
     },
     collapsed: {
       type: Boolean,
-      required: false,
       default: false
+    }
+  },
+  methods: {
+    handleSidebarToggle () {
+      this.$emit('sidebarToggle')
     }
   }
 }
@@ -58,10 +64,17 @@ export default {
         color: #fff;
       }
     }
-    .menu-trigger {
-      width: 2rem;
-      height: 2rem;
+    .header-Hamburger {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: @header-height;
+      height: 100%;
       cursor: pointer;
+      .menu-trigger {
+        width: 2rem;
+        height: 2rem;
+      }
     }
   }
 </style>

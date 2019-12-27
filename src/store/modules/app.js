@@ -11,7 +11,7 @@ import {
 
 const app = {
   state: {
-    sidebar: true,
+    collapsed: false,
     device: 'desktop',
     layout: '',
     fixedHeader: false,
@@ -22,7 +22,7 @@ const app = {
   },
   mutations: {
     SET_SIDEBAR_TYPE: (state, type) => {
-      state.sidebar = type
+      state.collapsed = type
       Vue.ls.set(SIDEBAR_TYPE, type)
     },
     TOGGLE_LAYOUT_MODE: (state, layout) => {
@@ -31,7 +31,7 @@ const app = {
     },
     CLOSE_SIDEBAR: (state) => {
       Vue.ls.set(SIDEBAR_TYPE, true)
-      state.sidebar = false
+      state.collapsed = true
     },
     TOGGLE_DEVICE: (state, device) => {
       state.device = device
@@ -58,7 +58,7 @@ const app = {
     }
   },
   actions: {
-    setSidebar ({ commit }, type) {
+    setSidebarType ({ commit }, type) {
       commit('SET_SIDEBAR_TYPE', type)
     },
     ToggleLayoutMode ({ commit }, mode) {

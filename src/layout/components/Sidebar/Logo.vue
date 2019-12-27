@@ -1,18 +1,20 @@
 <template>
-  <div class="sidebar-logo-container" :class="{'collapse':collapse}">
-    <transition name="sidebarLogoFade">
+  <div class="sidebar-logo-container" :class="{'collapsed':collapsed}">
       <router-link class="sidebar-logo-link" tag="div" :to="{name:'dashboard'}">
-        <svg-icon name="vue"></svg-icon>
-        <h1 v-if="!collapse">{{ title }}</h1>
+        <div class="icon-box">
+          <svg-icon name="vue"></svg-icon>
+        </div>
+        <transition name="fade">
+          <span v-if="!collapsed" class="title">{{ title }}</span>
+        </transition>
       </router-link>
-    </transition>
   </div>
 </template>
 <script>
 export default {
   name: 'Logo',
   props: {
-    collapse: {
+    collapsed: {
       type: Boolean,
       required: true
     },
@@ -24,11 +26,10 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.sidebarLogoFade-enter-active {
-  transition: opacity 1.5s;
+.fade-enter-active, .fade-leave-active {
+  transition: all 0.5s;
 }
-.sidebarLogoFade-enter,
-.sidebarLogoFade-leave-to {
+.fade-enter, .fade-leave-to {
   opacity: 0;
 }
 
@@ -39,24 +40,36 @@ export default {
   line-height: @header-height;
   background: @sidebar-bg;
   text-align: center;
-  overflow: hidden;
 
   .sidebar-logo-link {
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
+    height: 100%;
+    width: 100%;
+    line-height: @header-height;
+    text-align: center;
     cursor: pointer;
     color: #fff;
+    overflow: hidden;
 
-    .svg-icon {
-      margin-right: 1.5rem;
-      width: 3.5rem;
-      height: 3.5rem;
+    .icon-box {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: @sidebar-collapse-width;;
+      height: @header-height;
+      .svg-icon {
+        margin-right: 0;
+        width: 3rem;
+        height: 3rem;
+      }
     }
-    h1 {
+    span {
+      margin-right: 1rem;
       font-family: Avenir,Helvetica Neue,Arial,Helvetica,sans-serif;
-      vertical-align: middle;
+      vertical-align: top;
     }
+  }
+  &.collapsed {
+    padding: 0;
   }
 }
 </style>
