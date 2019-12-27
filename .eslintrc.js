@@ -11,7 +11,10 @@ module.exports = {
     'plugin:vue/essential',
     'eslint:recommended'
   ],
-  rules: {},
+  rules: {
+    'no-console': process.env.NODE_ENV === 'development' ? 'off' : 'error',
+    'no-debugger': process.env.NODE_ENV === 'development' ? 'off' : 'error'
+  },
   parserOptions: {
     parser: 'babel-eslint'
   }

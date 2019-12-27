@@ -37,7 +37,7 @@ export default {
   width: 100%;
   height:@header-height;
   line-height: @header-height;
-  background: #002140;
+  background: @sidebar-bg;
   text-align: center;
   overflow: hidden;
 
@@ -54,9 +54,7 @@ export default {
       height: 3.5rem;
     }
     h1 {
-      font-size: 2rem;
       font-family: Avenir,Helvetica Neue,Arial,Helvetica,sans-serif;
-      font-weight: 600;
       vertical-align: middle;
     }
   }

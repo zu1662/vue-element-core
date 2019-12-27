@@ -1,9 +1,11 @@
 <template>
   <div v-if="!item.hidden" class="menu-wrapper">
     <template v-if="hasOneShowingChild(item.children, item) && (!onlyOneChild.children || onlyOneChild.noShowingChildren) && !item.alwaysShow">
-      <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{'submenu-title-noDropdown':!isNest}">
-        <item :icon="onlyOneChild.meta.icon || (item.meta&&item.meta.icon)" :title="onlyOneChild.meta.title" />
-      </el-menu-item>
+      <app-link v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
+        <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{'submenu-title-noDropdown':!isNest}">
+          <item :icon="onlyOneChild.meta.icon || (item.meta&&item.meta.icon)" :title="onlyOneChild.meta.title" />
+        </el-menu-item>
+      </app-link>
     </template>
 
     <el-submenu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
@@ -24,7 +26,10 @@
 
 <script>
 import path from 'path'
+import { isExternal } from '@/utils/validate'
+
 import Item from './Item'
+import AppLink from './Link'
 export default {
   name: 'SidebarItem',
   props: {
@@ -43,21 +48,19 @@ export default {
     }
   },
   components: {
-    Item
+    Item,
+    AppLink
   },
   data () {
     this.onlyOneChild = null
     return {}
   },
   methods: {
-    isExternal (path) {
-      return /^(https?:|mailto:|tel:)/.test(path)
-    },
     resolvePath (routePath) {
-      if (this.isExternal(routePath)) {
+      if (isExternal(routePath)) {
         return routePath
       }
-      if (this.isExternal(this.basePath)) {
+      if (isExternal(this.basePath)) {
         return this.basePath
       }
       return path.resolve(this.basePath, routePath)
@@ -88,14 +91,3 @@ export default {
   }
 }
 </script>
-<style lang="less" scoped>
-  .svg-icon {
-    margin-right: 1rem;
-  }
-  .nest-menu .el-menu-item {
-    background-color: @sidebar-submenu-bg !important;
-    &:hover {
-      background-color: @sidebar-submenu-hover-bg !important;
-    }
-  }
-</style>

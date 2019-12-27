@@ -2,16 +2,14 @@
  * @Author: zu1662
  * @LastEditor: zu1662
  * @Date: 2019-12-17 09:40:14
- * @LastEditTime: 2019-12-25 09:55:59
+ * @LastEditTime: 2019-12-26 15:36:26
  * @Description: 通用常量定义
  */
 
 export const ACCESS_TOKEN = 'Access-Token'
 export const SIDEBAR_TYPE = 'SIDEBAR_TYPE'
-export const DEFAULT_THEME = 'DEFAULT_THEME'
 export const DEFAULT_LAYOUT_MODE = 'DEFAULT_LAYOUT_MODE'
 export const DEFAULT_COLOR = 'DEFAULT_COLOR'
-export const DEFAULT_COLOR_WEAK = 'DEFAULT_COLOR_WEAK'
 export const DEFAULT_FIXED_HEADER = 'DEFAULT_FIXED_HEADER'
 export const DEFAULT_FIXED_SIDEMENU = 'DEFAULT_FIXED_SIDEMENU'
 export const DEFAULT_FIXED_HEADER_HIDDEN = 'DEFAULT_FIXED_HEADER_HIDDEN'

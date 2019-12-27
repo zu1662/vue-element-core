@@ -22,6 +22,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 // custom components
 import '@/icons'
 import { AxiosPlugin } from '@/utils/request'
+import '@/directives/waves'
 
 Vue.config.productionTip = false
 

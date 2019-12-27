@@ -2,7 +2,7 @@
   <div class="notice">
     <el-dropdown trigger="click" class="notice-dropdown">
       <el-badge :value="10" :max="99" class="notice-badge">
-        <svg-icon name="notice" class="notice-icon"></svg-icon>
+        <i class="el-icon-bell"></i>
       </el-badge>
       <el-dropdown-menu slot="dropdown" class="notice-dropdown-menu">
         <el-tabs v-model="activeName">
@@ -49,11 +49,11 @@ export default {
     .notice-badge {
       cursor: pointer;
 
-      .notice-icon {
+      .el-icon-bell {
         display: block;
+        font-size: @notice-width;
         width: @notice-width;
         height: @notice-width;
-        color: #000;
       }
       /deep/ .el-badge__content {
         top: 0;

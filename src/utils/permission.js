@@ -1,4 +1,10 @@
-// 权限插件，用于控制页面按钮等权限
+/*
+ * @Author: zu1662
+ * @LastEditor: zu1662
+ * @Date: 2019-12-23 15:41:47
+ * @LastEditTime: 2019-12-27 11:41:52
+ * @Description: 权限插件，用于控制页面按钮等权限
+ */
 import store from '@/store'
 
 const PerssionPlugin = {}
@@ -23,7 +29,6 @@ PerssionPlugin.install = (Vue) => {
     if (actionRoles && actionRoles.statusTag === '1') {
       flag = true
     }
-    // console.log('actions-flag', flag, permissions)
     return flag
   }
 }

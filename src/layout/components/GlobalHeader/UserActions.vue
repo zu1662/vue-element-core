@@ -1,6 +1,6 @@
 <template>
   <div class="user-actions">
-    <el-dropdown trigger="click" class="action-dropdown">
+    <el-dropdown class="action-dropdown">
       <div class="user-info">
         <el-avatar size="small" :src="avatar"></el-avatar>
         <span class="user-name">{{nickname}}</span>
@@ -8,25 +8,25 @@
       <el-dropdown-menu slot="dropdown" class="user-dropdown-menu">
           <el-dropdown-item command="user-center">
             <router-link :to="{ name: 'center' }" tag="div">
-              <svg-icon name="user"></svg-icon>
+              <i class="el-icon-user"></i>
               <span>个人中心</span>
             </router-link>
           </el-dropdown-item>
           <el-dropdown-item command="user-setting">
             <router-link :to="{ name: 'center' }" tag="div">
-              <svg-icon name="setting"></svg-icon>
+              <i class="el-icon-setting"></i>
               <span>账户设置</span>
             </router-link>
           </el-dropdown-item>
           <el-dropdown-item command="user-test" disabled>
             <router-link :to="{ name: 'center' }" tag="div">
-              <svg-icon name="setting"></svg-icon>
+              <i class="el-icon-setting"></i>
               <span>测试</span>
             </router-link>
           </el-dropdown-item>
           <el-dropdown-item command="logout" divided>
             <div @click="handlelogout">
-              <svg-icon name="logout"></svg-icon>
+              <i class="el-icon-switch-button"></i>
               <span>退出登陆</span>
             </div>
           </el-dropdown-item>
@@ -87,9 +87,7 @@ export default {
     }
   }
   .user-dropdown-menu {
-    .svg-icon{
-      width: 1.5rem;
-      height: 1.5rem;
+    i[class^="el-icon-"]{
       margin-right: 0.5rem;
     }
   }
