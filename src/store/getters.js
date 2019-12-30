@@ -6,7 +6,10 @@ const getters = {
   userInfo: state => state.user.info,
   addRouters: state => state.permission.addRouters,
   routers: state => state.permission.routers,
-  lang: state => state.i18n.lang
+  lang: state => state.i18n.lang,
+  sidebar: state => state.app.sidebar,
+  device: state => state.app.device,
+  errorLogs: state => state.errorLog.logs
 }
 
 export default getters

@@ -1,69 +1,101 @@
 <template>
-  <section class="app-container">
-    <div class="app-aside" :class="{'collapse': collapsed}" v-if="layoutMode === 'sidebar'">
-      <sidebar :collapsed="collapsed" :layoutMode="layoutMode"></sidebar>
-    </div>
-    <div class="app-container">
-      <div class="app-header" :class="{'topmenu-header': layoutMode === 'topmenu'}">
-        <global-header :collapsed="collapsed" :layoutMode="layoutMode" @sidebarToggle="sidebarToggle"></global-header>
+  <div :class="classObj" class="app-wrapper">
+    <div v-if="device === 'mobile' && sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
+    <sidebar class="sidebar-container" />
+    <div :class="{ hasTagsView: needTagsView }" class="main-container">
+      <div :class="{'fixed-header':fixedHeader}">
+        <navbar />
+        <tags-view v-if="needTagsView" />
       </div>
-      <div class="app-main">
-
-      </div>
+      <app-main />
+      <right-panel v-if="showSettings">
+        <settings />
+      </right-panel>
     </div>
-    <right-panel>
-      <setting/>
-    </right-panel>
-  </section>
+  </div>
 </template>
+
 <script>
+import RightPanel from '@/components/RightPanel'
+import { AppMain, Navbar, Settings, Sidebar, TagsView } from './components'
+import ResizeMixin from './mixin/ResizeHandler'
 import { mapState } from 'vuex'
 
-import Sidebar from './components/Sidebar'
-import GlobalHeader from './components/GlobalHeader'
-import Setting from './components/Settings'
-import RightPanel from '@/components/RightPanel'
 export default {
   name: 'Layout',
   components: {
+    AppMain,
+    Navbar,
+    RightPanel,
+    Settings,
     Sidebar,
-    GlobalHeader,
-    Setting,
-    RightPanel
+    TagsView
   },
+  mixins: [ResizeMixin],
   computed: {
     ...mapState({
-      layoutMode: state => state.app.layout || 'sidebar',
-      collapsed: state => state.app.collapsed
-    })
-  },
-  data () {
-    return {
-      fixedHeader: false,
-      showTagsView: false
+      sidebar: state => state.app.sidebar,
+      device: state => state.app.device,
+      showSettings: state => state.settings.showSettings,
+      needTagsView: state => state.settings.tagsView,
+      fixedHeader: state => state.settings.fixedHeader
+    }),
+    classObj () {
+      return {
+        hideSidebar: !this.sidebar.opened,
+        openSidebar: this.sidebar.opened,
+        withoutAnimation: this.sidebar.withoutAnimation,
+        mobile: this.device === 'mobile'
+      }
     }
   },
   methods: {
-    sidebarToggle () {
-      this.$store.dispatch('setSidebarType', !this.collapsed)
+    handleClickOutside () {
+      this.$store.dispatch('closeSideBar', { withoutAnimation: false })
     }
   }
 }
 </script>
-<style lang="less" scoped>
-  .app-container {
-    display: flex;
-    flex: 1;
-    width: 100%;
-    height: 100%;
 
-    .app-aside {
-      flex-shrink: 0;
+<style lang="less" scoped>
+  @import "~@/styles/mixin.less";
+
+  .app-wrapper {
+    .clearfix-mixin;
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+    &.mobile.openSidebar {
+      position: fixed;
+      top: 0;
     }
-    .app-header {
-      flex: 1;
-      height: @header-height;
-      box-shadow: @shadow-down;
-    }
+  }
+
+  .drawer-bg {
+    background: #000;
+    opacity: 0.3;
+    width: 100%;
+    top: 0;
+    height: 100%;
+    position: absolute;
+    z-index: 999;
+  }
+
+  .fixed-header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 9;
+    width: calc(100% - @sidebar-width);
+    transition: width 0.28s;
+  }
+
+  .hideSidebar .fixed-header {
+    width: calc(100% - @sidebar-collapse-width)
+  }
+
+  .mobile .fixed-header {
+    width: 100%;
   }
 </style>

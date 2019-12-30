@@ -32,9 +32,24 @@
 @shadow-card:             0 0.2rem 0.6rem 0 rgba(0, 0, 0, .2);
 
 // 系统基础变量
-@sidebar-width:               25.6rem;
+@sidebar-width:               21.6rem;
 @sidebar-collapse-width:      5.4rem;
 @sidebar-bg:                #304156;
 @sidebar-submenu-bg:        #1f2d3d;
 @sidebar-submenu-hover-bg:  #001528;
 @header-height:               6rem;
+@tag-height:                  4rem;
+@side-text:                 #fff;
+@side-active-text:          @primary-color;
+
+
+:export {
+  sidebarWidth: sidebar-width;
+  sidebarCollapseWidth: @sidebar-collapse-width;
+  sidebarBg: @sidebar-bg;
+  sidebarSubmenuBg: @sidebar-submenu-bg;
+  sidebarSubmenuHoverBg: @sidebar-submenu-hover-bg;
+  headerHeight: @header-height;
+  sideText: @side-text;
+  sideActiveText: @side-active-text;
+}

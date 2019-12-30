@@ -1,5 +1,6 @@
 /* Layout */
 import Layout from '@/layout'
+import PageView from '@/layout/PageView'
 
 /**
  * 基础路由
@@ -39,14 +40,14 @@ export const asyncRouterMap = [
         path: '/dashboard',
         name: 'dashboard',
         redirect: '/dashboard/index',
-        component: Layout,
+        component: PageView,
         meta: { title: '主页', keepAlive: true, permissionCode: 'dashboard' },
         children: [
           {
             path: '/dashboard/index',
             name: 'index',
             component: () => import('@/views/dashboard/index'),
-            meta: { title: '工作台', keepAlive: true, icon: 'dashboard', permissionCode: 'dashboard:index' }
+            meta: { title: '工作台', keepAlive: true, icon: 'dashboard', permissionCode: 'dashboard:index', affix: true }
           }
         ]
       },
@@ -55,7 +56,7 @@ export const asyncRouterMap = [
       {
         path: '/exception',
         name: 'exception',
-        component: Layout,
+        component: PageView,
         redirect: '/exception/403',
         meta: { title: '异常页', icon: 'dashboard', permissionCode: 'exception' },
         children: [
