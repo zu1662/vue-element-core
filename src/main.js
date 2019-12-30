@@ -21,9 +21,10 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 // custom components
 import '@/icons'
-import '@/utils/row-transition'
 import { AxiosPlugin } from '@/utils/request'
 import '@/directives/waves'
+import RowTransition from '@/components/RowTransition'
+Vue.component(RowTransition.name, RowTransition)
 
 Vue.config.productionTip = false
 

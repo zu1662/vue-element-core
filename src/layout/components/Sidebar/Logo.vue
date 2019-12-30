@@ -1,13 +1,13 @@
 <template>
   <div class="sidebar-logo-container" :class="{'collapsed':collapsed}">
-      <router-link class="sidebar-logo-link" tag="div" :to="{name:'dashboard'}">
-        <div class="icon-box">
-          <svg-icon name="vue"></svg-icon>
-        </div>
-        <transition name="fade">
-          <span v-if="!collapsed" class="title">{{ title }}</span>
-        </transition>
-      </router-link>
+    <router-link class="sidebar-logo-link" tag="div" :to="{name:'dashboard'}">
+      <div class="icon-box">
+        <svg-icon name="vue"></svg-icon>
+      </div>
+      <transition name="fade">
+        <span v-if="!collapsed" class="title">{{ title }}</span>
+      </transition>
+    </router-link>
   </div>
 </template>
 <script>

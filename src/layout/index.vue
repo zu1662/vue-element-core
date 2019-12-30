@@ -7,7 +7,9 @@
       <div class="app-header" :class="{'topmenu-header': layoutMode === 'topmenu'}">
         <global-header :collapsed="collapsed" :layoutMode="layoutMode" @sidebarToggle="sidebarToggle"></global-header>
       </div>
-      <div class="app-main"></div>
+      <div class="app-main">
+
+      </div>
     </div>
     <right-panel>
       <setting/>
@@ -57,10 +59,6 @@ export default {
 
     .app-aside {
       flex-shrink: 0;
-      width: @sidebar-width;
-      &.collapse {
-        width: @sidebar-collapse-width;
-      }
     }
     .app-header {
       flex: 1;

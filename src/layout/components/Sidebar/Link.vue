@@ -11,17 +11,17 @@ export default {
       required: true
     }
   },
-  render: function (createElement, context) {
+  render: function (h, context) {
     const { to } = context.props
     if (isExternal(to)) {
-      return createElement('a', {
+      return h('a', {
         attrs: {
           href: to,
           target: '_blank'
         }
       }, context.children)
     } else {
-      return createElement('router-link', {
+      return h('router-link', {
         attrs: {
           to: to
         }

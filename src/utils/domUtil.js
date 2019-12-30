@@ -68,4 +68,5 @@ export function removeClass (el, cls) {
     el.className = (curClass || '').replace(/^[\s\uFEFF]+|[\s\uFEFF]+$/g, '')
   }
 }
+
 export const domTitle = 'vue-element-core'
