@@ -4,6 +4,7 @@
       v-model="value"
     >
     </el-switch>
+    <el-button @click="clickaa('222')">aaa</el-button>
   </div>
 </template>
 
@@ -12,6 +13,11 @@ export default {
   data () {
     return {
       value: true
+    }
+  },
+  methods: {
+    clickaa (val) {
+      val.forEach(item => {})
     }
   }
 }

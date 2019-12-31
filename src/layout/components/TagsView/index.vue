@@ -26,12 +26,12 @@
       :style="{ left: left + 'px', top: top + 'px' }"
       class="contextmenu"
     >
-      <li @click="refreshSelectedTag(selectedTag)">Refresh</li>
+      <li @click="refreshSelectedTag(selectedTag)">刷新页面</li>
       <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">
-        Close
+        关闭当前
       </li>
-      <li @click="closeOthersTags">Close Others</li>
-      <li @click="closeAllTags(selectedTag)">Close All</li>
+      <li @click="closeOthersTags">关闭其他</li>
+      <li @click="closeAllTags(selectedTag)">全部关闭</li>
     </ul>
   </div>
 </template>

@@ -19,7 +19,7 @@ const mapping = {
 
 const settings = {
   state: {
-    theme: '#1890ff',
+    theme: '#409EFF',
     showSettings: true,
     tagsView: true,
     fixedHeader: true,

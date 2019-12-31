@@ -8,6 +8,17 @@ import PageView from '@/layout/PageView'
  */
 export const constantRouterMap = [
   {
+    path: '/redirect',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '/redirect/:path*',
+        component: () => import('@/components/Redirect/index')
+      }
+    ]
+  },
+  {
     path: '/login',
     name: 'login',
     meta: { title: '登陆' },

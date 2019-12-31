@@ -6,10 +6,13 @@ export const storageOptions = {
 }
 
 export const settings = {
-  theme: '#1890ff', // 主题色
+  theme: '#409EFF', // 主题色
   showSettings: true, // 是否展示设置
   tagsView: true, // 多页签模式
   fixedHeader: true, // 固定头
   sidebarLogo: true, // 展示logo
   layoutType: 'sidebar' // 布局格式
 }
+
+// errorLog setting
+export const errorLog = ['production', 'development']

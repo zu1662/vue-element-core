@@ -9,8 +9,14 @@ import { storageOptions } from '@/config/defaultSetting'
 // mock
 import './mock'
 
+// use
+import './use'
+
+// filters
+import './filters'
+
 import '@/styles/index.less' // global css
-import initializer from '@/utils/initializer'
+import initializer from '@/utils/initializer' // setting init
 
 // permission
 import './router/permission' // permission control
@@ -24,8 +30,6 @@ import 'element-ui/lib/theme-chalk/index.css'
 import '@/icons'
 import { AxiosPlugin } from '@/utils/request'
 import '@/directives/waves'
-import RowTransition from '@/components/RowTransition'
-Vue.component(RowTransition.name, RowTransition)
 
 Vue.config.productionTip = false
 

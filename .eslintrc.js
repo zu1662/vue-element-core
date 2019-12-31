@@ -12,8 +12,9 @@ module.exports = {
     'eslint:recommended'
   ],
   rules: {
-    'no-console': process.env.NODE_ENV === 'development' ? 'off' : 'error',
-    'no-debugger': process.env.NODE_ENV === 'development' ? 'off' : 'error'
+    'no-console':  'off',
+    'no-debugger': process.env.NODE_ENV === 'development' ? 'off' : 'error',
+    'no-alert': process.env.NODE_ENV === 'development' ? 'off' : 'error'
   },
   parserOptions: {
     parser: "babel-eslint",

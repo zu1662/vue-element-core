@@ -6,39 +6,39 @@
       </el-button>
     </el-badge>
 
-    <el-dialog :visible.sync="dialogTableVisible" width="80%" append-to-body>
+    <el-dialog :visible.sync="dialogTableVisible" width="80%" append-to-body fullscreen>
       <div slot="title">
-        <span style="padding-right: 10px;">Error Log</span>
-        <el-button size="mini" type="primary" icon="el-icon-delete" @click="clearAll">Clear All</el-button>
+        <span style="padding-right: 10px;font-size:2rem">Error Log</span>
       </div>
-      <el-table :data="errorLogs" border>
-        <el-table-column label="Message">
-          <template slot-scope="{row}">
-            <div>
-              <span class="message-title">Msg:</span>
-              <el-tag type="danger">
-                {{ row.err.message }}
-              </el-tag>
-            </div>
-            <br>
-            <div>
-              <span class="message-title" style="padding-right: 10px;">Info: </span>
-              <el-tag type="warning">
-                {{ row.vm.$vnode.tag }} error in {{ row.info }}
-              </el-tag>
-            </div>
-            <br>
-            <div>
-              <span class="message-title" style="padding-right: 16px;">Url: </span>
-              <el-tag type="success">
-                {{ row.url }}
-              </el-tag>
+      <div class="action-box">
+        <el-button size="mini" type="info" icon="el-icon-upload" @click="uploadToServer">上传至服务器</el-button>
+        <el-button size="mini" type="danger" icon="el-icon-delete" @click="clearAll">清除错误日志</el-button>
+      </div>
+      <el-table :data="errorLogs" size="mini" stripe border>
+        <el-table-column type="expand">
+          <template slot-scope="scope">
+            <div style="line-height: 3rem;" v-html="scope.row.err.stack">
             </div>
           </template>
         </el-table-column>
-        <el-table-column label="Stack">
-          <template slot-scope="scope">
-            {{ scope.row.err.stack }}
+        <el-table-column label="Msg">
+          <template slot-scope="{row}">
+            {{ row.err.message }}
+          </template>
+        </el-table-column>
+        <el-table-column label="Info">
+          <template slot-scope="{row}">
+            {{ row.vm.$vnode.tag }} error in {{ row.info }}
+          </template>
+        </el-table-column>
+        <el-table-column label="Url">
+          <template slot-scope="{row}">
+            {{ row.url }}
+          </template>
+        </el-table-column>
+        <el-table-column label="Time">
+          <template slot-scope="{row}">
+            {{ row.time | dateFormat }}
           </template>
         </el-table-column>
       </el-table>
@@ -62,7 +62,10 @@ export default {
   methods: {
     clearAll () {
       this.dialogTableVisible = false
-      this.$store.dispatch('errorLog/clearErrorLog')
+      this.$store.dispatch('clearErrorLog')
+    },
+    uploadToServer () {
+
     }
   }
 }
@@ -70,9 +73,12 @@ export default {
 
 <style scoped>
 .message-title {
-  font-size: 16px;
+  font-size: 2rem;
   color: #333;
   font-weight: bold;
   padding-right: 8px;
+}
+.action-box {
+  margin-bottom: 2rem;
 }
 </style>
