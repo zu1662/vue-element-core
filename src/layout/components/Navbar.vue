@@ -1,16 +1,19 @@
 <template>
-  <div class="navbar">
-    <hamburger id="hamburger-container" :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
-
-    <breadcrumb id="breadcrumb-container" class="breadcrumb-container" />
+  <div class="navbar" :class="{'navbar-topmenu': !sidebarType}">
+    <div class="left-menu">
+      <template v-if="sidebarType">
+        <hamburger id="hamburger-container" :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
+        <breadcrumb id="breadcrumb-container" class="breadcrumb-container" />
+      </template>
+      <sidebar v-else class="sidebar-topmenu" :sidebarType="sidebarType"/>
+    </div>
 
     <div class="right-menu">
       <template v-if="device!=='mobile'">
-
         <error-log class="errLog-container right-menu-item hover-effect" />
-
         <screenfull id="screenfull" class="right-menu-item hover-effect" />
       </template>
+      <user-menu></user-menu>
     </div>
   </div>
 </template>
@@ -21,13 +24,17 @@ import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
 import ErrorLog from '@/components/ErrorLog'
 import Screenfull from '@/components/Screenfull'
+import UserMenu from '@/components/UserMenu/index'
+import Sidebar from './Sidebar'
 
 export default {
   components: {
     Breadcrumb,
     Hamburger,
     ErrorLog,
-    Screenfull
+    Screenfull,
+    UserMenu,
+    Sidebar
   },
   computed: {
     ...mapGetters([
@@ -35,6 +42,12 @@ export default {
       'avatar',
       'device'
     ])
+  },
+  props: {
+    sidebarType: {
+      type: Boolean,
+      default: false
+    }
   },
   methods: {
     toggleSideBar () {
@@ -51,37 +64,49 @@ export default {
 <style lang="less" scoped>
 .navbar {
   height: @header-height;
+  display: flex;
+  justify-content: space-between;
   overflow: hidden;
   position: relative;
   background: #fff;
   box-shadow: 0 1px 4px rgba(0,21,41,.08);
 
-  .hamburger-container {
-    line-height:  @header-height;
-    height: 100%;
-    float: left;
-    cursor: pointer;
-    transition: background .3s;
-    -webkit-tap-highlight-color:transparent;
-
-    &:hover {
-      background: rgba(0, 0, 0, .025)
+  &.navbar-topmenu {
+    background-color: @sidebar-bg;
+    .right-menu {
+      color: #fff;
     }
   }
 
-  .breadcrumb-container {
-    float: left;
-  }
+  .left-menu {
+    flex: 1;
+    .hamburger-container {
+      line-height:  @header-height;
+      height: 100%;
+      float: left;
+      cursor: pointer;
+      transition: background .3s;
+      -webkit-tap-highlight-color:transparent;
 
-  .errLog-container {
-    display: inline-block;
-    vertical-align: top;
-  }
+      &:hover {
+        background: rgba(0, 0, 0, .025)
+      }
+    }
 
+    .breadcrumb-container {
+      float: left;
+    }
+
+    .errLog-container {
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
   .right-menu {
-    float: right;
+    display: flex;
     height: 100%;
     line-height:  @header-height;
+    color: @subsidiary-color;
 
     &:focus {
       outline: none;
@@ -92,7 +117,6 @@ export default {
       padding: 0 8px;
       height: 100%;
       font-size: 18px;
-      color: #5a5e66;
       vertical-align: text-bottom;
 
       &.hover-effect {

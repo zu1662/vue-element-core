@@ -98,7 +98,7 @@ export default {
         }
         this.$store.dispatch('Login', params).then(res => {
           if (res.code === 200) {
-            this.$router.push({ name: 'dashboard' })
+            this.$router.push({ path: this.$route.redirect || '/' })
           } else {
             this.$notify.error({
               title: '错误',

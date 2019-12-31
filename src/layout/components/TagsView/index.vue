@@ -9,6 +9,7 @@
         :to="{ path: tag.path, query: tag.query, fullPath: tag.fullPath }"
         tag="span"
         class="tags-view-item"
+        :style="isActive(tag) ? getActiveStyle(): null "
         @click.middle.native="!isAffix(tag) ? closeSelectedTag(tag) : ''"
         @contextmenu.prevent.native="openMenu(tag, $event)"
       >
@@ -53,7 +54,8 @@ export default {
   },
   computed: {
     ...mapState({
-      visitedViews: state => state.tagsView.visitedViews
+      visitedViews: state => state.tagsView.visitedViews,
+      theme: state => state.settings.theme
     }),
     ...mapGetters([
       'addRouters'
@@ -77,6 +79,12 @@ export default {
     this.addTags()
   },
   methods: {
+    getActiveStyle () {
+      return {
+        backgroundColor: this.theme,
+        borderColor: this.theme
+      }
+    },
     isActive (route) {
       return route.path === this.$route.path
     },
@@ -219,18 +227,20 @@ export default {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.04);
   .tags-view-wrapper {
     .tags-view-item {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       position: relative;
       cursor: pointer;
-      height: 26px;
-      line-height: 26px;
+      height: 30px;
+      line-height:30px;
       border: 1px solid #d8dce5;
+      border-radius: 0.2rem;
       color: #495060;
       background: #fff;
-      padding: 0 8px;
-      font-size: 12px;
-      margin-left: 5px;
-      margin-top: 4px;
+      padding: 0.2rem 1.2rem;
+      font-size: 1.4rem;
+      margin-left: 1rem;
+      margin-top: 0.5rem;
       &:first-of-type {
         margin-left: 15px;
       }
@@ -249,7 +259,7 @@ export default {
           height: 8px;
           border-radius: 50%;
           position: relative;
-          margin-right: 2px;
+          margin-right: 0.5rem;
         }
       }
     }
@@ -283,17 +293,18 @@ export default {
 .tags-view-wrapper {
   .tags-view-item {
     .el-icon-close {
-      width: 16px;
-      height: 16px;
-      vertical-align: 2px;
+      margin-left: 0.5rem;
+      width: 2rem;
+      height: 2rem;
+      font-size: 2rem;
+      line-height: 2rem;
       border-radius: 50%;
       text-align: center;
       transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
       transform-origin: 100% 50%;
-      &:before {
+      &::before {
         transform: scale(0.6);
         display: inline-block;
-        vertical-align: -3px;
       }
       &:hover {
         background-color: #b4bccc;

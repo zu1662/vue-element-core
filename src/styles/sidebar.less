@@ -5,8 +5,37 @@
     transition: margin-left .28s;
     margin-left: @sidebar-width;
     position: relative;
+    &.main-topmenu {
+      margin-left: 0;
+      .fixed-header {
+        width: 100%;
+      }
+    }
   }
 
+  // topemnu sidebar
+  .sidebar-topmenu {
+    display: flex;
+    .sidebar-logo-container {
+      height: @header-height;
+      line-height: @header-height;
+      max-width: @sidebar-width;
+      background-color: @sidebar-bg;
+    }
+    .el-menu--horizontal {
+      display: flex;
+      overflow-x: scroll;
+      .menu-wrapper {
+        height: @header-height;
+        .el-submenu__title,
+        .el-menu-item {
+          & > span {
+            padding: 0 2rem 0 1rem;
+          }
+        }
+      }
+    }
+  }
   .sidebar-container {
     transition: width 0.28s;
     width: @sidebar-width !important;
@@ -23,28 +52,6 @@
     // reset element-ui css
     .horizontal-collapse-transition {
       transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
-    }
-
-    .scrollbar-wrapper {
-      overflow-x: hidden !important;
-    }
-
-    .el-scrollbar__bar.is-vertical {
-      right: 0px;
-    }
-
-    .el-scrollbar {
-      height: 100%;
-    }
-
-    &.has-logo {
-      .el-scrollbar {
-        height: calc(100% - @sidebar-collapse-width);
-      }
-    }
-
-    .is-horizontal {
-      display: none;
     }
 
     a {
@@ -71,9 +78,9 @@
       }
     }
 
-    .is-active>.el-submenu__title {
-      color:@side-active-text !important;
-    }
+    // .is-active > .el-submenu__title {
+    //   color: @side-active-text !important;
+    // }
 
     & .nest-menu .el-submenu>.el-submenu__title,
     & .el-submenu .el-menu-item {

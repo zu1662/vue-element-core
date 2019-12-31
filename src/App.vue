@@ -1,12 +1,24 @@
 <template>
   <div id="app">
-      <router-view/>
-    </div>
+    <router-view/>
+  </div>
 </template>
 
 <script>
+import ThemeChalk from '@/utils/themeChalk'
 export default {
-  name: 'app'
+  name: 'app',
+  computed: {
+    nowTheme () {
+      return this.$store.state.settings.theme
+    }
+  },
+  mounted () {
+    const themeChalk = new ThemeChalk()
+    this.$nextTick(_ => {
+      themeChalk.setTheme(this.nowTheme)
+    })
+  }
 }
 </script>
 <style>

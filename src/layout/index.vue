@@ -1,10 +1,10 @@
 <template>
   <div :class="classObj" class="app-wrapper">
     <div v-if="device === 'mobile' && sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
-    <sidebar class="sidebar-container" />
-    <div :class="{ hasTagsView: needTagsView }" class="main-container">
-      <div :class="{'fixed-header':fixedHeader}">
-        <navbar />
+    <sidebar class="sidebar-container" v-if="sidebarType" :sidebarType="sidebarType"/>
+    <div :class="{ hasTagsView: needTagsView, 'main-topmenu': !sidebarType }" class="main-container">
+      <div :class="{'fixed-header':fixedHeader}" class="app-header">
+        <navbar :sidebarType="sidebarType"/>
         <tags-view v-if="needTagsView" />
       </div>
       <app-main />
@@ -38,7 +38,8 @@ export default {
       device: state => state.app.device,
       showSettings: state => state.settings.showSettings,
       needTagsView: state => state.settings.tagsView,
-      fixedHeader: state => state.settings.fixedHeader
+      fixedHeader: state => state.settings.fixedHeader,
+      layoutType: state => state.settings.layoutType
     }),
     classObj () {
       return {
@@ -47,6 +48,9 @@ export default {
         withoutAnimation: this.sidebar.withoutAnimation,
         mobile: this.device === 'mobile'
       }
+    },
+    sidebarType () {
+      return this.device === 'mobile' || this.layoutType === 'sidebar'
     }
   },
   methods: {

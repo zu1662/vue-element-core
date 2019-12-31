@@ -1,20 +1,18 @@
 <template>
   <div :class="{'has-logo': showLogo}">
     <logo v-if="showLogo" :collapse="isCollapse" />
-    <el-scrollbar wrap-class="scrollbar-wrapper">
-      <el-menu
-        :default-active="activeMenu"
-        :collapse="isCollapse"
-        :background-color="variables.sidebarBg"
-        :text-color="variables.sideText"
-        :unique-opened="false"
-        :active-text-color="variables.sideActiveText"
-        :collapse-transition="false"
-        mode="vertical"
-      >
-        <sidebar-item v-for="route in permission_routes" :key="route.path" :item="route" :base-path="route.path" />
-      </el-menu>
-    </el-scrollbar>
+    <el-menu
+      :default-active="activeMenu"
+      :collapse="isCollapse"
+      :background-color="variables.sidebarBg"
+      :text-color="variables.sideText"
+      :unique-opened="false"
+      :active-text-color="theme"
+      :collapse-transition="false"
+      :mode="sidebarType ? 'vertical' : 'horizontal'"
+    >
+      <sidebar-item v-for="route in permission_routes" :key="route.path" :item="route" :base-path="route.path" />
+    </el-menu>
   </div>
 </template>
 
@@ -26,13 +24,20 @@ import variables from '@/styles/var.less'
 
 export default {
   components: { SidebarItem, Logo },
+  props: {
+    sidebarType: {
+      type: Boolean,
+      default: true
+    }
+  },
   computed: {
     ...mapGetters([
       'addRouters',
       'sidebar'
     ]),
     ...mapState({
-      showLogo: state => state.settings.sidebarLogo
+      showLogo: state => state.settings.sidebarLogo,
+      theme: state => state.settings.theme
     }),
     activeMenu () {
       const route = this.$route

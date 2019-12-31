@@ -23,12 +23,28 @@ export default {
 </script>
 
 <style lang="less" scoped>
+/* fade-transform */
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all .5s;
+}
+
+.fade-transform-enter {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
 .app-main {
   /* 50= navbar  50  */
-  min-height: calc(100vh - @header-height);
+  min-height: calc(100% - @header-height);
   width: 100%;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .fixed-header + .app-main {
@@ -38,20 +54,11 @@ export default {
 .hasTagsView {
   .app-main {
     /* 84 = navbar + tags-view = 50 + 34 */
-    min-height: calc(100vh - (@tag-height + @header-height));
+    min-height: calc(100% - (@tag-height + @header-height));
   }
 
   .fixed-header + .app-main {
     padding-top: @tag-height + @header-height;
-  }
-}
-</style>
-
-<style lang="less">
-// fix css style bug in open el-dialog
-.el-popup-parent--hidden {
-  .fixed-header {
-    padding-right: 15px;
   }
 }
 </style>

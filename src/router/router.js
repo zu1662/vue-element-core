@@ -10,6 +10,7 @@ export const constantRouterMap = [
   {
     path: '/login',
     name: 'login',
+    meta: { title: '登陆' },
     component: () => import(/* webpackChunkName: "login" */ '@/views/user/Login')
   },
   {
@@ -20,6 +21,7 @@ export const constantRouterMap = [
 
   {
     path: '/404',
+    name: '404',
     component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404')
   }
 ]
@@ -32,6 +34,7 @@ export const asyncRouterMap = [
 
   {
     path: '/',
+    name: 'home',
     redirect: '/dashboard/index',
     component: Layout,
     children: [
@@ -65,12 +68,6 @@ export const asyncRouterMap = [
             name: 'Exception403',
             component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/403'),
             meta: { title: '403', permissionCode: 'exception:403' }
-          },
-          {
-            path: '/exception/404',
-            name: 'Exception404',
-            component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404'),
-            meta: { title: '404', permissionCode: 'exception:404' }
           },
           {
             path: '/exception/500',

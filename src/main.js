@@ -10,6 +10,7 @@ import { storageOptions } from '@/config/defaultSetting'
 import './mock'
 
 import '@/styles/index.less' // global css
+import initializer from '@/utils/initializer'
 
 // permission
 import './router/permission' // permission control
@@ -37,5 +38,6 @@ new Vue({
   router,
   store,
   i18n,
+  created: initializer,
   render: h => h(App)
 }).$mount('#app')

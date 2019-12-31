@@ -16,6 +16,7 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'development' ? 'off' : 'error'
   },
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: "babel-eslint",
+    sourceType: "module"
   }
 }

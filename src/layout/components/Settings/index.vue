@@ -4,10 +4,7 @@
       <h3 class="drawer-title">Page style setting</h3>
       <div class="drawer-item layout-type">
         <el-tooltip content="侧边栏导航" placement="top">
-          <!-- @click="handleSetLayout('sidebar')" -->
-          <!-- :class="{'active': layoutMode === 'sidebar'}" -->
-           <!-- :class="{'active': layoutMode === 'topmenu'}" -->
-          <div class="layout">
+          <div class="layout" :class="{'active': layoutType === 'sidebar'}" @click="handleSetLayout('sidebar')">
             <div class="layout-demo sidebar">
               <div></div>
               <div></div>
@@ -16,7 +13,7 @@
           </div>
         </el-tooltip>
         <el-tooltip content="顶部栏导航" placement="top">
-          <div class="layout">
+          <div class="layout" :class="{'active': layoutType === 'topmenu'}" @click="handleSetLayout('topmenu')">
             <div class="layout-demo topmenu">
               <div></div>
               <div></div>
@@ -58,6 +55,9 @@ export default {
     return {}
   },
   computed: {
+    layoutType () {
+      return this.$store.state.settings.layoutType
+    },
     fixedHeader: {
       get () {
         return this.$store.state.settings.fixedHeader
@@ -93,6 +93,15 @@ export default {
     }
   },
   methods: {
+    handleSetLayout (layout) {
+      if (layout === 'topmenu') {
+        this.$store.dispatch('openSideBar', false)
+      }
+      this.$store.dispatch('changeSetting', {
+        key: 'layoutType',
+        value: layout
+      })
+    },
     themeChange (val) {
       this.$store.dispatch('changeSetting', {
         key: 'theme',

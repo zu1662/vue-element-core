@@ -1,6 +1,6 @@
 <template>
   <div>
-    <svg-icon :name="isFullscreen ? 'exit-fullscreen' : 'fullscreen'" @click="click" />
+    <svg-icon :name="isFullscreen ? 'exit-fullscreen' : 'fullscreen'" class="screenfull-svg" @click="click" />
   </div>
 </template>
 
@@ -52,7 +52,7 @@ export default {
 .screenfull-svg {
   display: inline-block;
   cursor: pointer;
-  fill: #5a5e66;;
+  color: inherit;
   width: 20px;
   height: 20px;
   vertical-align: 10px;

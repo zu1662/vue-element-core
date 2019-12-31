@@ -21,6 +21,9 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang='less' scoped>
+  .page-view {
+    width: 100%;
+    padding: 2rem;
+  }
 </style>
