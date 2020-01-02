@@ -2,7 +2,6 @@ import Mock from 'mockjs'
 import { builder } from '../util'
 
 const info = (options) => {
-  console.log('options', options)
   const userInfo = {
     id: '4291d7da9005377ec9aec4a71ea837f',
     name: 'huazi',
@@ -76,6 +75,22 @@ const info = (options) => {
             id: 23,
             name: 'exception 500',
             code: 'exception:500',
+            status: 1,
+            type: 1
+          }
+        ]
+      },
+      {
+        id: 3,
+        name: 'components',
+        code: 'components',
+        status: 1,
+        type: 0,
+        children: [
+          {
+            id: 31,
+            name: '水印',
+            code: 'components:watermark',
             status: 1,
             type: 1
           }

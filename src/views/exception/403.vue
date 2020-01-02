@@ -1,14 +1,39 @@
 <template>
   <div>
-    <water-mark content="huazite" spacing="6px" rotate="-30" opacity="0.5">
-      <div style="line-height: 30px">
-        <p>
-          每个人都有属于自己的一片森林，也许我们从来不曾去过，但它一直在那里，总会在那里。迷失的人迷失了，相逢的人会再相逢。
-        </p> <p class="text">
-          希望你可以记住我，记住我这样活过，这样在你身边待过。
-        </p> <p class="text">
-          少年时我们追求激情，成熟后却迷恋平庸。在我们寻找、伤害、背离之后，还能一如既往地相信爱情，这是一种勇气。
-        </p>
+     <water-mark
+      class="text-container"
+      style="padding:30px;line-height: 30px;"
+      spacing="10px"
+      content="huazite"
+    >
+      <p class="text">
+        通过<b>作用域插槽</b>的坐标属性(coord)可以对水印行列进行定制
+      </p>
+      <p class="text">
+        通过<b>作用域插槽</b>的坐标属性(coord)可以对水印行列进行定制
+      </p>
+      <p class="text">
+        通过<b>作用域插槽</b>的坐标属性(coord)可以对水印行列进行定制
+      </p>
+    </water-mark>
+    <water-mark
+      class="text-container"
+      style="padding:30px;line-height: 30px;"
+      spacing="10px"
+      opacity="0.5"
+    >
+      <p class="text">
+        通过<b>作用域插槽</b>的坐标属性(coord)可以对水印行列进行定制
+      </p>
+      <p class="text">
+        通过<b>作用域插槽</b>的坐标属性(coord)可以对水印行列进行定制
+      </p>
+      <p class="text">
+        通过<b>作用域插槽</b>的坐标属性(coord)可以对水印行列进行定制
+      </p>
+      <div slot="watermark" slot-scope="props">
+        <span v-if="props.coord.row % 2 "> 奇数行</span>
+        <span v-else>偶数行</span>
       </div>
     </water-mark>
 

@@ -63,7 +63,7 @@ export default {
     },
     spacing: {
       type: [String, Number],
-      default: '20vw'
+      default: '20px'
     },
     repeatX: {
       type: Boolean,
@@ -79,7 +79,7 @@ export default {
     },
     opacity: {
       type: [String, Number],
-      default: 0.1
+      default: 0.3
     }
   },
 
@@ -92,7 +92,7 @@ export default {
   mounted () {
     if (this.content) {
       this.ctx = this.$refs.canvas.getContext('2d')
-      this.ratio = 1
+      this.ratio = 2 // min ratio = 2
 
       this.$_initCanvas()
       this.$_computedSpacing()
@@ -106,9 +106,7 @@ export default {
       const { mark, canvas } = $refs
       const { clientWidth, clientHeight } = mark
 
-      this.ctxWidth = canvas.width = clientWidth * ratio
-      this.ctxHeight = canvas.height = clientHeight * ratio
-
+      this.ctxSize = canvas.width = canvas.height = clientWidth > clientHeight ? clientWidth * ratio : clientHeight * ratio
       ctx.scale(1 / ratio, 1 / ratio)
     },
 
@@ -119,31 +117,25 @@ export default {
         this.realSpacing = spacing
         return
       }
-      const [, amount = 20, unit = 'vw'] = /([0-9]+)([A-Za-z]+)/.exec(spacing)
-      const [, baseSize] = /([0-9]+)([A-Za-z]+)/.exec(getComputedStyle(window.document.documentElement)['font-size'])
+      const [, amount = 20, unit = 'px'] = /([0-9]+)([A-Za-z]+)/.exec(spacing)
+      const [, baseSize = 20] = /([0-9]+)([A-Za-z]+)/.exec(getComputedStyle(window.document.documentElement)['font-size'])
 
       if (unit === 'px') {
         this.realSpacing = amount
       } else if (unit === 'rem') {
-        this.realSpacing = amount * baseSize
-      } else if (unit === 'vh') {
-        const height = window.screen.height
-        this.realSpacing = amount * height / 100
-      } else if (unit === 'vw') {
-        const width = window.screen.width
-        this.realSpacing = amount * width / 100
+        this.realSpacing = amount * parseInt(baseSize)
       }
 
       this.realSpacing *= ratio
     },
 
     $_draw () {
-      const { content, ctx, realSpacing, ratio, ctxWidth, ctxHeight } = this
+      const { content, ctx, realSpacing, ratio, ctxSize } = this
 
       const _fontSize = fontSize * ratio
       const contentLength = content.length * _fontSize
-      const xCount = Math.ceil(ctxWidth * ratio / (contentLength + realSpacing))
-      const yCount = Math.ceil(ctxHeight * ratio / (_fontSize + realSpacing))
+      const xCount = Math.ceil(ctxSize * ratio / (contentLength + realSpacing))
+      const yCount = Math.ceil(ctxSize * ratio / (_fontSize + realSpacing))
 
       ctx.font = `${_fontSize}px DIN Alternate, "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif`
       ctx.fillStyle = color
@@ -194,7 +186,7 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    transform: translate3d(-50%, -50%, 0);
+    transform: translate(-30%, -30%);
   }
 }
 

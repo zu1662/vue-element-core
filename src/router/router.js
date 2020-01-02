@@ -66,6 +66,23 @@ export const asyncRouterMap = [
         ]
       },
 
+      // components
+      {
+        path: '/components',
+        name: 'components',
+        component: PageView,
+        redirect: '/components/watermark',
+        meta: { title: '组件', icon: 'dashboard', permissionCode: 'components' },
+        children: [
+          {
+            path: '/components/watermark',
+            name: 'watermark',
+            component: () => import(/* webpackChunkName: "fail" */ '@/views/components/WaterMark.vue'),
+            meta: { title: '水印', permissionCode: 'components:watermark' }
+          }
+        ]
+      },
+
       // Exception
       {
         path: '/exception',

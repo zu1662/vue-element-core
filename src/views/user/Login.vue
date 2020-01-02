@@ -38,7 +38,7 @@
               <svg-icon name="password" class="base-item-svg"></svg-icon>
               <span>{{$t('user.password')}}</span>
             </label>
-            <el-input class="login-input" type="password" v-model="loginForm.password" :placeholder="$t('user.passwordPlaceholder')" autocomplete="off"></el-input>
+            <el-input class="login-input" type="password" @keyup.enter.native="submitForm('loginForm')" v-model="loginForm.password" :placeholder="$t('user.passwordPlaceholder')" autocomplete="off"></el-input>
           </el-form-item>
           <div class="more-item">
             <el-checkbox v-model="loginForm.autoLogin">{{$t('user.autoLogin')}}</el-checkbox>
