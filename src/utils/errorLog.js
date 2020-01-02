@@ -28,6 +28,7 @@ if (checkNeed()) {
         time,
         url: window.location.href
       })
+      // eslint-disable-next-line no-console
       console.error(err, info)
     })
   }
