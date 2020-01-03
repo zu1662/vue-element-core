@@ -75,6 +75,12 @@ export const asyncRouterMap = [
         meta: { title: '组件', icon: 'dashboard', permissionCode: 'components' },
         children: [
           {
+            path: '/components/AnimateTransition',
+            name: 'AnimateTransition',
+            component: () => import(/* webpackChunkName: "fail" */ '@/views/components/AnTransition.vue'),
+            meta: { title: '动画过渡', permissionCode: 'components:anTransition' }
+          },
+          {
             path: '/components/watermark',
             name: 'watermark',
             component: () => import(/* webpackChunkName: "fail" */ '@/views/components/WaterMark.vue'),

@@ -93,6 +93,13 @@ const info = (options) => {
             code: 'components:watermark',
             status: 1,
             type: 1
+          },
+          {
+            id: 32,
+            name: '过渡',
+            code: 'components:anTransition',
+            status: 1,
+            type: 1
           }
         ]
       }
