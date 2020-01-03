@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { login, getInfo, logout } from '@/api/user'
-import { ACCESS_TOKEN } from '@/config/variableInit'
+import { ACCESS_TOKEN, SET_LOCKER, LOCKER_PSW, LOCKER_REDIRECT } from '@/config/variableInit'
 
 const user = {
   state: {
@@ -8,12 +8,16 @@ const user = {
     name: '',
     avatar: '',
     permissions: [],
-    info: {}
+    info: {},
+    locker: {}
   },
 
   mutations: {
     SET_TOKEN: (state, token) => {
       state.token = token
+    },
+    SET_LOCKER: (state, locker) => {
+      state.locker = locker
     },
     SET_NAME: (state, { name }) => {
       state.name = name
@@ -78,6 +82,42 @@ const user = {
           commit('SET_PERMISSION', [])
           Vue.ls.remove(ACCESS_TOKEN)
         })
+      })
+    },
+
+    // 锁屏
+    SetLocker ({ commit }, locker) {
+      return new Promise((resolve) => {
+        if (locker) {
+          Vue.ls.set(SET_LOCKER, locker.isLocked)
+          Vue.ls.set(LOCKER_PSW, locker.password)
+          Vue.ls.set(LOCKER_REDIRECT, locker.redirect)
+          commit('SET_LOCKER', locker)
+          resolve()
+        }
+      })
+    },
+
+    // 锁屏登陆
+    LockerIn ({ commit }, lockerPass) {
+      return new Promise((resolve) => {
+        if (Vue.ls.get(LOCKER_PSW) === lockerPass) {
+          const redirect = Vue.ls.get(LOCKER_REDIRECT)
+          Vue.ls.remove(SET_LOCKER)
+          Vue.ls.remove(LOCKER_PSW)
+          Vue.ls.remove(LOCKER_REDIRECT)
+          commit('SET_LOCKER', '')
+          resolve({
+            code: 1,
+            message: 'success',
+            redirect: redirect
+          })
+        } else {
+          resolve({
+            code: 0,
+            message: '密码不匹配'
+          })
+        }
       })
     }
 

@@ -22,12 +22,17 @@ export const constantRouterMap = [
     path: '/login',
     name: 'login',
     meta: { title: '登陆' },
-    component: () => import(/* webpackChunkName: "login" */ '@/views/user/Login')
+    component: () => import(/* webpackChunkName: "Login" */ '@/views/user/Login')
   },
   {
     path: '/register',
     name: 'register',
     component: () => import(/* webpackChunkName: "Register" */ '@/views/user/Register')
+  },
+  {
+    path: '/locker',
+    name: 'locker',
+    component: () => import(/* webpackChunkName: "Locker" */ '@/components/Locker/LockerIn.vue')
   },
 
   {

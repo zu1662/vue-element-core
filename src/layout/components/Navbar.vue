@@ -10,8 +10,15 @@
 
     <div class="right-menu">
       <template v-if="device!=='mobile'">
-        <error-log class="errLog-container right-menu-item hover-effect" />
-        <screenfull id="screenfull" class="right-menu-item hover-effect" />
+        <el-tooltip class="item" effect="dark" content="错误日志" placement="bottom">
+          <error-log class="errLog-container right-menu-item hover-effect" />
+        </el-tooltip>
+        <el-tooltip class="item" effect="dark" content="全屏" placement="bottom">
+          <screenfull id="screenfull" class="right-menu-item hover-effect" />
+        </el-tooltip>
+        <el-tooltip class="item" effect="dark" content="锁屏" placement="bottom">
+          <set-locker class="right-menu-item hover-effect"/>
+        </el-tooltip>
       </template>
       <user-menu></user-menu>
     </div>
@@ -24,6 +31,7 @@ import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
 import ErrorLog from '@/components/ErrorLog'
 import Screenfull from '@/components/Screenfull'
+import SetLocker from '@/components/Locker/SetLocker.vue'
 import UserMenu from '@/components/UserMenu/index'
 import Sidebar from './Sidebar'
 
@@ -33,6 +41,7 @@ export default {
     Hamburger,
     ErrorLog,
     Screenfull,
+    SetLocker,
     UserMenu,
     Sidebar
   },
