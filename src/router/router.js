@@ -19,6 +19,11 @@ export const constantRouterMap = [
     ]
   },
   {
+    path: '/locker',
+    name: 'locker',
+    component: () => import(/* webpackChunkName: "Locker" */ '@/components/Locker/LockerIn.vue')
+  },
+  {
     path: '/login',
     name: 'login',
     meta: { title: '登陆' },
@@ -29,12 +34,6 @@ export const constantRouterMap = [
     name: 'register',
     component: () => import(/* webpackChunkName: "Register" */ '@/views/user/Register')
   },
-  {
-    path: '/locker',
-    name: 'locker',
-    component: () => import(/* webpackChunkName: "Locker" */ '@/components/Locker/LockerIn.vue')
-  },
-
   {
     path: '/404',
     name: '404',

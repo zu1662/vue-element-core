@@ -7,9 +7,9 @@
     <div class="login-panel" v-if="showLocker">
       <div class="title">Unlock</div>
         <div class="body">
-          <el-form :model="lockerForm" :rules="rules" ref="lockForm">
+          <el-form :model="lockerForm" :rules="rules" ref="lockForm" @submit.native.prevent>
             <el-form-item prop="lockerPass">
-              <el-input type="password" class="handle-input" placeholder="请输入锁屏密码" v-model="lockerForm.lockerPass"></el-input>
+              <el-input type="password" class="handle-input" @keyup.enter.native.stop.prevent="submitForm('lockForm')" placeholder="请输入锁屏密码" v-model="lockerForm.lockerPass"></el-input>
             </el-form-item>
           </el-form>
           <el-button class="handle-btn" icon="el-icon-unlock" @click="submitForm('lockForm')"></el-button>

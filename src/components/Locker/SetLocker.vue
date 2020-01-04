@@ -3,9 +3,9 @@
     <i class="el-icon-lock locker-icon" @click="handleLocker"></i>
 
     <el-dialog width="30%" title="设置锁屏密码" :visible.sync="lockerDialog" append-to-body destroy-on-close>
-      <el-form ref="lockerForm" :model="lockerForm" :rules="rules">
+      <el-form ref="lockerForm" :model="lockerForm" :rules="rules" @submit.native.prevent>
         <el-form-item label="锁屏密码" prop="lockerPass">
-          <el-input type="password" placeholder="请输入锁屏密码" v-model="lockerForm.lockerPass"></el-input>
+          <el-input type="password" placeholder="请输入锁屏密码" @keyup.enter.native.stop.prevent="submitForm('lockerForm')" v-model="lockerForm.lockerPass"></el-input>
         </el-form-item>
         <el-form-item class="submit-item">
           <el-button style="width:30%" type="primary" @click="submitForm('lockerForm')">确定</el-button>

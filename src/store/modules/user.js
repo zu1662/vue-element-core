@@ -19,7 +19,7 @@ const user = {
     SET_LOCKER: (state, locker) => {
       state.locker = locker
     },
-    SET_NAME: (state, { name }) => {
+    SET_NAME: (state, name) => {
       state.name = name
     },
     SET_AVATAR: (state, avatar) => {
@@ -60,7 +60,7 @@ const user = {
             reject(new Error('getInfo: permissions must be a non-null array !'))
           }
 
-          commit('SET_NAME', { name: result.name })
+          commit('SET_NAME', result.name)
           commit('SET_AVATAR', result.avatar)
 
           resolve(result)
@@ -78,9 +78,16 @@ const user = {
         }).catch(() => {
           resolve()
         }).finally(() => {
+          // remove token & permissions
           commit('SET_TOKEN', '')
           commit('SET_PERMISSION', [])
           Vue.ls.remove(ACCESS_TOKEN)
+
+          // remove locker datas
+          commit('SET_LOCKER', '')
+          Vue.ls.remove(SET_LOCKER)
+          Vue.ls.remove(LOCKER_PSW)
+          Vue.ls.remove(LOCKER_REDIRECT)
         })
       })
     },

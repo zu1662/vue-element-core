@@ -1,3 +1,10 @@
+/*
+ * @Author: zu1662
+ * @LastEditor: zu1662
+ * @Date: 2020-01-04 18:04:44
+ * @LastEditTime : 2020-01-04 19:11:25
+ * @Description:
+ */
 import Vue from 'vue'
 import router from '.'
 import store from '../store'
@@ -6,7 +13,7 @@ import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // progress bar style
 import { Notification } from 'element-ui'
 import { setDocumentTitle, domTitle } from '@/utils/domUtil'
-import { ACCESS_TOKEN } from '@/config/variableInit'
+import { ACCESS_TOKEN, SET_LOCKER } from '@/config/variableInit'
 
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
@@ -21,12 +28,24 @@ router.beforeEach((to, from, next) => {
       next({ path: '/dashboard/index' })
       NProgress.done()
     } else {
+      // to locker
+      if (to.path === '/locker') {
+        Vue.ls.get(SET_LOCKER) ? next() : next({ path: '/dashboard/index', replace: true })
+        return
+      }
+      // not to locker but isLocked
+      if (Vue.ls.get(SET_LOCKER)) {
+        next({ path: '/locker' })
+        NProgress.done()
+        return
+      }
+      // when no permissions
       if (store.getters.permissions.length === 0) {
         store
           .dispatch('GetInfo')
           .then(res => {
             const permissions = res && res.permissions
-            store.dispatch('GenerateRoutes', permissions).then(() => {
+            store.dispatch('GenerateRoutes', permissions).then(_ => {
               // 根据roles权限生成可访问的路由表
               // 动态添加可访问路由表
               router.addRoutes(store.getters.addRouters)
