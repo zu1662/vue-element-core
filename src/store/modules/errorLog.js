@@ -12,10 +12,16 @@ const errorLog = {
   },
   actions: {
     addErrorLog ({ commit }, log) {
-      commit('ADD_ERROR_LOG', log)
+      return new Promise(resolve => {
+        commit('ADD_ERROR_LOG', log)
+        resolve()
+      })
     },
     clearErrorLog ({ commit }) {
-      commit('CLEAR_ERROR_LOG')
+      return new Promise(resolve => {
+        commit('CLEAR_ERROR_LOG')
+        resolve()
+      })
     }
   }
 }
