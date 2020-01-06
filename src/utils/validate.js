@@ -1,3 +1,10 @@
+/*
+ * @Author: zu1662
+ * @LastEditor: zu1662
+ * @Date: 2020-01-06 09:23:22
+ * @LastEditTime: 2020-01-06 13:43:54
+ * @Description: validate
+ */
 /**
  * @param {string} path
  * @returns {Boolean}
