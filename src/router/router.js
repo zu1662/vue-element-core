@@ -69,6 +69,21 @@ export const asyncRouterMap = [
           }
         ]
       },
+      // outpath
+      {
+        path: '/outpath',
+        name: 'outpath',
+        redirect: '/outpath/index',
+        component: PageView,
+        meta: { title: '外部页', keepAlive: true, permissionCode: 'outpath' },
+        children: [
+          {
+            path: 'https://www.baidu.com',
+            name: 'outIndex',
+            meta: { title: '测试页（外部）', icon: 'dashboard', permissionCode: 'outpath:outIndex' }
+          }
+        ]
+      },
 
       // components
       {

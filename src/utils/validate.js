@@ -25,6 +25,16 @@ export function validEmail (email) {
 }
 
 /**
+ * @param {string} password
+ * 长度8至16位，至少包含大写字母、小写字母、数字、特殊符号三种及以上，不包含空格
+ * @returns {Boolean}
+ */
+export function validPsw (password) {
+  const reg = /^(?!.*\s)(?![a-zA-Z]+$)(?![A-Z0-9]+$)(?![A-Z\W_]+$)(?![a-z0-9]+$)(?![a-z\W_]+$)(?![0-9\W_]+$)[a-zA-Z0-9\W_]{8,16}$/
+  return reg.test(password)
+}
+
+/**
  * @param {string} str
  * @returns {Boolean}
  */

@@ -102,6 +102,22 @@ const info = (options) => {
             type: 1
           }
         ]
+      },
+      {
+        id: 4,
+        name: 'outpath',
+        code: 'outpath',
+        status: 1,
+        type: 0,
+        children: [
+          {
+            id: 41,
+            name: '外部页',
+            code: 'outpath:outIndex',
+            status: 1,
+            type: 1
+          }
+        ]
       }
     ]
   }
