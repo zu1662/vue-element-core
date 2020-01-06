@@ -20,6 +20,7 @@ const tagsView = {
     },
 
     DEL_VISITED_VIEW: (state, view) => {
+      // eslint-disable-next-line no-unused-vars
       for (const [i, v] of state.visitedViews.entries()) {
         if (v.path === view.path) {
           state.visitedViews.splice(i, 1)
@@ -57,6 +58,7 @@ const tagsView = {
     },
 
     UPDATE_VISITED_VIEW: (state, view) => {
+      // eslint-disable-next-line no-unused-vars
       for (let v of state.visitedViews) {
         if (v.path === view.path) {
           v = Object.assign(v, view)
