@@ -53,7 +53,8 @@
               <svg-icon name="wechat"></svg-icon>
               <svg-icon name="qq"></svg-icon>
             </div>
-            <el-link type="primary" :underline="false">{{$t('user.register')}}</el-link>
+            <!-- <el-link type="primary" :underline="false">{{$t('user.register')}}</el-link> -->
+            <router-link to="/register" class="registeLink" replace>{{$t('user.register')}}</router-link>
           </div>
         </el-form>
       </div>
@@ -164,6 +165,13 @@ export default {
     border-right: none;
     border-left: none;
     border-radius: 0;
+  }
+  .registeLink {
+    font-size: 14px;
+    color: #409EFF;
+  }
+  .registeLink:hover {
+    color: #66b1ff;
   }
   .login-panel {
     z-index: 1000;
