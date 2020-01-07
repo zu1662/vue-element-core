@@ -12,9 +12,6 @@ import './mock'
 // use
 import './use'
 
-// filters
-import './filters'
-
 import '@/styles/index.less' // global css
 import initializer from '@/utils/initializer' // setting init
 
@@ -26,10 +23,8 @@ import PerssionPlugin from '@/utils/permission' // page button permission
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
-// custom components
-import '@/icons'
+// request plugin
 import { AxiosPlugin } from '@/utils/request'
-import '@/directives/waves'
 
 Vue.config.productionTip = false
 
