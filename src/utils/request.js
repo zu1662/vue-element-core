@@ -2,7 +2,7 @@
  * @Author: zu1662
  * @LastEditor: zu1662
  * @Date: 2019-12-16 16:26:12
- * @LastEditTime: 2019-12-24 13:15:41
+ * @LastEditTime: 2020-01-08 11:27:56
  * @Description: axios request封装
  */
 import Vue from 'vue'
@@ -16,7 +16,8 @@ const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_URL, // api base_url
   timeout: 6000 // 请求超时时间
 })
-console.log(process.env)
+
+// console.log(process.env.NODE_ENV)
 
 // error handle
 const err = (error) => {

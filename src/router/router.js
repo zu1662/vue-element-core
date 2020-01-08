@@ -80,7 +80,7 @@ export const asyncRouterMap = [
           {
             path: 'https://www.baidu.com',
             name: 'outIndex',
-            meta: { title: '测试页（外部）', icon: 'dashboard', permissionCode: 'outpath:outIndex' }
+            meta: { title: '外链（百度）', icon: 'dashboard', permissionCode: 'outpath:outIndex' }
           }
         ]
       },

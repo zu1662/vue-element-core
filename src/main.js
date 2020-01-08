@@ -17,7 +17,7 @@ import initializer from '@/utils/initializer' // setting init
 
 // permission
 import './router/permission' // permission control
-import PerssionPlugin from '@/utils/permission' // page button permission
+import PerssionPlugin from '@/plugins/permission' // page button permission plugin
 
 // base lib
 import ElementUI from 'element-ui'
