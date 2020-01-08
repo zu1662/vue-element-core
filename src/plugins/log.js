@@ -2,9 +2,10 @@
  * @Author: zu1662
  * @LastEditor: zu1662
  * @Date: 2020-01-08 10:54:35
- * @LastEditTime: 2020-01-08 11:34:50
+ * @LastEditTime: 2020-01-08 14:32:20
  * @Description: 自定义控制台输出
  */
+'use strict'
 class Log {
   constructor (normal = '#35495E', primary = '#3488ff', success = '#43B883', warning = '#e6a23c', danger = '#f56c6c') {
     this.normal = normal
@@ -58,38 +59,39 @@ class Log {
     )
   }
 
+  // _ is a hack. it will be wrong without _.
   /**
    * @description 打印 default 样式的文字
    */
-  default (text) {
+  _default (text) {
     this.colorful([{ text }])
   }
 
   /**
    * @description 打印 primary 样式的文字
    */
-  primary = function (text) {
+  _primary (text) {
     this.colorful([{ text, type: 'primary' }])
   }
 
   /**
    * @description 打印 success 样式的文字
    */
-  success = function (text) {
+  _success (text) {
     this.colorful([{ text, type: 'success' }])
   }
 
   /**
    * @description 打印 warning 样式的文字
    */
-  warning = function (text) {
+  _warning (text) {
     this.colorful([{ text, type: 'warning' }])
   }
 
   /**
    * @description 打印 danger 样式的文字
    */
-  danger = function (text) {
+  _danger (text) {
     this.colorful([{ text, type: 'danger' }])
   }
 }

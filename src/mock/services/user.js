@@ -100,6 +100,13 @@ const info = (options) => {
             code: 'components:anTransition',
             status: 1,
             type: 1
+          },
+          {
+            id: 42,
+            name: 'log输出',
+            code: 'components:log',
+            status: 1,
+            type: 1
           }
         ]
       },

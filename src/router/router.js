@@ -104,6 +104,12 @@ export const asyncRouterMap = [
             name: 'watermark',
             component: () => import(/* webpackChunkName: "fail" */ '@/views/components/WaterMark.vue'),
             meta: { title: '水印', permissionCode: 'components:watermark' }
+          },
+          {
+            path: '/components/log',
+            name: 'log',
+            component: () => import(/* webpackChunkName: "fail" */ '@/views/components/Log.vue'),
+            meta: { title: 'log输出', permissionCode: 'components:log' }
           }
         ]
       },
