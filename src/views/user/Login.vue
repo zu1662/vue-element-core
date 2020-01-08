@@ -53,7 +53,7 @@
               <svg-icon name="wechat"></svg-icon>
               <svg-icon name="qq"></svg-icon>
             </div>
-            <el-link type="primary" :underline="false">{{$t('user.register')}}</el-link>
+            <el-link type="primary" @click="registe" :underline="false">{{$t('user.register')}}</el-link>
           </div>
         </el-form>
       </div>
@@ -83,6 +83,9 @@ export default {
     }
   },
   methods: {
+    registe () {
+      this.$router.push({ name: 'register' })
+    },
     handleLangCommand (command) {
       this.$store.dispatch('SetLang', command)
       this.$refs.loginForm.clearValidate()
