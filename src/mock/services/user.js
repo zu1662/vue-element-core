@@ -107,6 +107,13 @@ const info = (options) => {
             code: 'components:log',
             status: 1,
             type: 1
+          },
+          {
+            id: 52,
+            name: '数字动画',
+            code: 'components:countup',
+            status: 1,
+            type: 1
           }
         ]
       },

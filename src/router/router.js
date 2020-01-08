@@ -90,7 +90,7 @@ export const asyncRouterMap = [
         path: '/components',
         name: 'components',
         component: PageView,
-        redirect: '/components/watermark',
+        redirect: '/components/AnimateTransition',
         meta: { title: '组件', icon: 'dashboard', permissionCode: 'components' },
         children: [
           {
@@ -104,6 +104,12 @@ export const asyncRouterMap = [
             name: 'watermark',
             component: () => import(/* webpackChunkName: "fail" */ '@/views/components/WaterMark.vue'),
             meta: { title: '水印', permissionCode: 'components:watermark' }
+          },
+          {
+            path: '/components/countup',
+            name: 'countup',
+            component: () => import(/* webpackChunkName: "fail" */ '@/views/components/CountUp.vue'),
+            meta: { title: '数字动画', permissionCode: 'components:countup' }
           },
           {
             path: '/components/log',
