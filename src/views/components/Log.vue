@@ -1,5 +1,6 @@
 <template>
   <div class="log-body">
+    <h1>打开控制台，查看效果</h1>
     <div class="item">
       <h2>$log.capsule</h2>
       <el-button size="small" type="primary" @click="$log.capsule('title', 'primary')">
