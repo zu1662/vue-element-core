@@ -54,7 +54,6 @@
               <svg-icon name="qq"></svg-icon>
             </div>
             <el-link type="primary" @click="registe" :underline="false">{{$t('user.register')}}</el-link>
-            <!-- <router-link to="/register" class="registeLink" :style="getActiveStyle()" replace>{{$t('user.register')}}</router-link> -->
           </div>
         </el-form>
       </div>
