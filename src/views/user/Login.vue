@@ -168,13 +168,6 @@ export default {
     border-left: none;
     border-radius: 0;
   }
-  .registeLink {
-    font-size: 14px;
-    // color: #409EFF;
-  }
-  .registeLink:hover {
-    // color: #66b1ff;
-  }
   .login-panel {
     z-index: 1000;
     display: flex;
