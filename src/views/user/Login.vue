@@ -53,8 +53,8 @@
               <svg-icon name="wechat"></svg-icon>
               <svg-icon name="qq"></svg-icon>
             </div>
-            <!-- <el-link type="primary" :underline="false">{{$t('user.register')}}</el-link> -->
-            <router-link to="/register" class="registeLink" replace>{{$t('user.register')}}</router-link>
+            <el-link type="primary" @click="registe" :underline="false">{{$t('user.register')}}</el-link>
+            <!-- <router-link to="/register" class="registeLink" :style="getActiveStyle()" replace>{{$t('user.register')}}</router-link> -->
           </div>
         </el-form>
       </div>
@@ -63,6 +63,7 @@
 </template>
 <script>
 import md5 from 'md5'
+import { mapState } from 'vuex'
 export default {
   name: 'Login',
   data () {
@@ -83,7 +84,21 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapState({
+      visitedViews: state => state.tagsView.visitedViews,
+      theme: state => state.settings.theme
+    })
+  },
   methods: {
+    getActiveStyle () {
+      return {
+        color: this.theme
+      }
+    },
+    registe () {
+      this.$router.push({ name: 'register' })
+    },
     handleLangCommand (command) {
       this.$store.dispatch('SetLang', command)
       this.$refs.loginForm.clearValidate()
@@ -168,10 +183,10 @@ export default {
   }
   .registeLink {
     font-size: 14px;
-    color: #409EFF;
+    // color: #409EFF;
   }
   .registeLink:hover {
-    color: #66b1ff;
+    // color: #66b1ff;
   }
   .login-panel {
     z-index: 1000;
