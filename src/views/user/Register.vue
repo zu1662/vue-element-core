@@ -85,9 +85,6 @@ export default {
       }
     }
   },
-  created () {
-    // this.$refs.registeForm.clearValidate()
-  },
   methods: {
     // 密码确认校验
     rePass (rule, value, callback) {

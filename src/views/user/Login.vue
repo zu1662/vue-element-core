@@ -62,7 +62,6 @@
 </template>
 <script>
 import md5 from 'md5'
-import { mapState } from 'vuex'
 export default {
   name: 'Login',
   data () {
@@ -83,18 +82,7 @@ export default {
       }
     }
   },
-  computed: {
-    ...mapState({
-      visitedViews: state => state.tagsView.visitedViews,
-      theme: state => state.settings.theme
-    })
-  },
   methods: {
-    getActiveStyle () {
-      return {
-        color: this.theme
-      }
-    },
     registe () {
       this.$router.push({ name: 'register' })
     },
