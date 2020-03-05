@@ -114,6 +114,13 @@ const info = (options) => {
             code: 'components:countup',
             status: 1,
             type: 1
+          },
+          {
+            id: 62,
+            name: 'code展示',
+            code: 'components:highlight',
+            status: 1,
+            type: 1
           }
         ]
       },

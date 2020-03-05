@@ -106,6 +106,12 @@ export const asyncRouterMap = [
             meta: { title: '水印', permissionCode: 'components:watermark' }
           },
           {
+            path: '/components/highlight',
+            name: 'highlight',
+            component: () => import(/* webpackChunkName: "fail" */ '@/views/components/CodeHighlight.vue'),
+            meta: { title: 'code展示', permissionCode: 'components:highlight' }
+          },
+          {
             path: '/components/countup',
             name: 'countup',
             component: () => import(/* webpackChunkName: "fail" */ '@/views/components/CountUp.vue'),
