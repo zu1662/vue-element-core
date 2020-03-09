@@ -1,22 +1,33 @@
-export const setDocumentTitle = function (title) {
-  document.title = title
-  const ua = navigator.userAgent
-  // eslint-disable-next-line
-  const regex = /\bMicroMessenger\/([\d\.]+)/
-  if (regex.test(ua) && /ip(hone|od|ad)/i.test(ua)) {
-    const i = document.createElement('iframe')
-    i.src = '/favicon.ico'
-    i.style.display = 'none'
-    i.onload = function () {
-      setTimeout(function () {
-        i.remove()
-      }, 9)
-    }
-    document.body.appendChild(i)
+import i18n from '@/locales'
+
+// set document title
+export const setDocumentTitle = function (routeMeta, mainTitle) {
+  // 判断 是否存在此 key 的值
+  const hasKey = i18n.te('route.' + routeMeta.titlePath)
+  if (hasKey) {
+    const translatedTitle = i18n.t('route.' + routeMeta.titlePath)
+    return translatedTitle + ' - ' + mainTitle
+  }
+  if (routeMeta.title) {
+    return routeMeta.title + ' - ' + mainTitle
+  }
+  return mainTitle
+}
+
+// get i18n route title
+export function getMetaTitle (meta) {
+  // 判断 是否存在此 key 的值
+  const hasKey = i18n.te('route.' + meta.titlePath)
+  if (hasKey) {
+    const translatedTitle = i18n.t('route.' + meta.titlePath)
+    return translatedTitle
+  }
+  if (meta.title) {
+    return meta.title
   }
 }
 
-/* istanbul ignore next */
+// dom hasClass
 export function hasClass (el, cls) {
   if (!el || !cls) return false
   if (cls.indexOf(' ') !== -1) throw new Error('className should not contain space.')
@@ -27,7 +38,7 @@ export function hasClass (el, cls) {
   }
 }
 
-/* istanbul ignore next */
+// dom addClass
 export function addClass (el, cls) {
   if (!el) return
   var curClass = el.className
@@ -48,7 +59,7 @@ export function addClass (el, cls) {
   }
 }
 
-/* istanbul ignore next */
+// dom removeClass
 export function removeClass (el, cls) {
   if (!el || !cls) return
   var classes = cls.split(' ')
@@ -68,5 +79,3 @@ export function removeClass (el, cls) {
     el.className = (curClass || '').replace(/^[\s\uFEFF]+|[\s\uFEFF]+$/g, '')
   }
 }
-
-export const domTitle = 'vue-element-core'

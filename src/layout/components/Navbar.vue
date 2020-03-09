@@ -20,6 +20,7 @@
           <set-locker class="right-menu-item hover-effect"/>
         </el-tooltip>
       </template>
+      <lang-set class="right-menu-item hover-effect"/>
       <user-menu></user-menu>
     </div>
   </div>
@@ -33,6 +34,7 @@ import ErrorLog from '@/components/ErrorLog'
 import Screenfull from '@/components/Screenfull'
 import SetLocker from '@/components/Locker/SetLocker.vue'
 import UserMenu from '@/components/UserMenu/index'
+import LangSet from '@/components/LangSet'
 import Sidebar from './Sidebar'
 
 export default {
@@ -43,6 +45,7 @@ export default {
     Screenfull,
     SetLocker,
     UserMenu,
+    LangSet,
     Sidebar
   },
   computed: {

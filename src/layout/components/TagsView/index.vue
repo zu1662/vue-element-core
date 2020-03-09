@@ -13,7 +13,7 @@
         @click.middle.native="!isAffix(tag) ? closeSelectedTag(tag) : ''"
         @contextmenu.prevent.native="openMenu(tag, $event)"
       >
-        {{ tag.title }}
+        {{ getMetaTitle(tag.meta) }}
         <span
           v-if="!isAffix(tag)"
           class="el-icon-close"
@@ -38,6 +38,7 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
+import { getMetaTitle } from '@/utils/domUtil'
 import ScrollPane from './ScrollPane'
 import path from 'path'
 
@@ -79,6 +80,7 @@ export default {
     this.addTags()
   },
   methods: {
+    getMetaTitle: getMetaTitle,
     getActiveStyle () {
       return {
         backgroundColor: this.theme,

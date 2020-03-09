@@ -12,7 +12,7 @@ import store from '../store'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // progress bar style
 import { Notification } from 'element-ui'
-import { setDocumentTitle, domTitle } from '@/utils/domUtil'
+import { setDocumentTitle } from '@/utils/domUtil'
 import { ACCESS_TOKEN, SET_LOCKER } from '@/config/variableInit'
 
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
@@ -21,7 +21,10 @@ const whiteList = ['login', 'register'] // no redirect whitelist
 
 router.beforeEach((to, from, next) => {
   NProgress.start() // start progress bar
-  to.meta && (typeof to.meta.title !== 'undefined' && setDocumentTitle(`${to.meta.title} - ${domTitle}`))
+  // set document title
+  if (to.meta) {
+    document.title = setDocumentTitle(to.meta, process.env.VUE_APP_GLOBAL_TITLE)
+  }
   if (Vue.ls.get(ACCESS_TOKEN)) {
     /* has token */
     if (to.path === '/login') {

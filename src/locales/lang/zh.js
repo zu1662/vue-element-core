@@ -1,4 +1,24 @@
 export default {
+  route: {
+    dashboard: '主页',
+    outpath: {
+      mainTitle: '外链',
+      outpath_BD: '外链（百度）'
+    },
+    components: {
+      mainTitle: '组件',
+      transition: '动画过渡',
+      watermark: '水印',
+      highlight: 'code展示',
+      countup: '数字动画',
+      log: 'log输出'
+    },
+    exception: {
+      mainTitle: '异常',
+      403: '403',
+      500: '500'
+    }
+  },
   dashboard: {
     test: '测试'
   },

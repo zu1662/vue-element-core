@@ -1,4 +1,24 @@
 export default {
+  route: {
+    dashboard: 'Dashboard',
+    outpath: {
+      mainTitle: 'Outpath',
+      outpath_BD: 'outpath( baidu )'
+    },
+    components: {
+      mainTitle: 'Components',
+      transition: 'Animate Transition',
+      watermark: 'Watermark',
+      highlight: 'Highlight',
+      countup: 'Countup',
+      log: 'Log'
+    },
+    exception: {
+      mainTitle: 'Exception',
+      403: '403',
+      500: '500'
+    }
+  },
   dashboard: {
     test: 'test'
   },

@@ -13,17 +13,7 @@
       <div class="right">
         <div class="right-title">
           <div class="title-name">{{$t('user.login')}}</div>
-          <div class="lang-set">
-            <el-dropdown trigger="click" @command="handleLangCommand">
-              <span class="el-dropdown-link">
-                <svg-icon style="cursor: pointer;" name="language" class="lang-svg"></svg-icon>
-              </span>
-              <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item command="zh">{{$t('lang.zh')}}</el-dropdown-item>
-                <el-dropdown-item command="en">{{$t('lang.en')}}</el-dropdown-item>
-              </el-dropdown-menu>
-            </el-dropdown>
-          </div>
+          <lang-set @setLang="handleLangCommand"/>
         </div>
         <el-form hide-required-asterisk :model="loginForm" status-icon :rules="loginRules" ref="loginForm" label-position="top" class="login-form">
           <el-form-item class="base-item" prop="userName">
@@ -62,8 +52,10 @@
 </template>
 <script>
 import md5 from 'md5'
+import LangSet from '@/components/LangSet'
 export default {
   name: 'Login',
+  components: { LangSet },
   data () {
     return {
       submitting: false,
@@ -87,7 +79,6 @@ export default {
       this.$router.push({ name: 'register' })
     },
     handleLangCommand (command) {
-      this.$store.dispatch('SetLang', command)
       this.$refs.loginForm.clearValidate()
     },
     submitForm (formName) {
