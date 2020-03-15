@@ -1,9 +1,12 @@
 <template>
   <section class="app-main">
     <transition name="fade-transform" mode="out-in">
-      <keep-alive :include="cachedViews">
-        <router-view :key="key" />
+      <keep-alive>
+        <router-view v-if="$route.meta.keepAlive" :key="key" />
       </keep-alive>
+    </transition>
+    <transition name="fade-transform" mode="out-in">
+       <router-view v-if="!$route.meta.keepAlive" :key="key" />
     </transition>
   </section>
 </template>
@@ -41,7 +44,7 @@ export default {
 
 .app-main {
   /* 50= navbar  50  */
-  min-height: calc(100% - @header-height);
+  height: calc(100% - @header-height);
   width: 100%;
   position: relative;
   overflow-x: hidden;
@@ -54,7 +57,7 @@ export default {
 .hasTagsView {
   .app-main {
     /* 84 = navbar + tags-view = 50 + 34 */
-    min-height: calc(100% - (@tag-height + @header-height));
+    height: calc(100% - (@tag-height + @header-height));
   }
 
   .fixed-header + .app-main {

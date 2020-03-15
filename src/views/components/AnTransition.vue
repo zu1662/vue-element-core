@@ -1,5 +1,5 @@
 <template>
-  <div class="an-transition-body">
+  <div class="an-transition-body view-body">
     <div class="intro">
       <h2>使用 <el-link type="primary" href="https://daneden.github.io/animate.css/" target="_blank">animate.css</el-link> 设置 过渡效果。</h2>
       <p>name: 动画名称</p>

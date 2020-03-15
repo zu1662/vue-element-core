@@ -74,6 +74,9 @@ export default {
       position: fixed;
       top: 0;
     }
+    .main-container {
+      height: 100%;
+    }
   }
 
   .drawer-bg {

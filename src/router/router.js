@@ -59,7 +59,7 @@ export const asyncRouterMap = [
         name: 'dashboard',
         redirect: '/dashboard/index',
         component: PageView,
-        meta: { title: '主页', keepAlive: true, permissionCode: 'dashboard' },
+        meta: { title: '主页', permissionCode: 'dashboard' },
         children: [
           {
             path: '/dashboard/index',
@@ -75,7 +75,7 @@ export const asyncRouterMap = [
         name: 'outpath',
         redirect: '/outpath/index',
         component: PageView,
-        meta: { title: '外链', titlePath: 'outpath', keepAlive: true, permissionCode: 'outpath' },
+        meta: { title: '外链', titlePath: 'outpath', permissionCode: 'outpath' },
         children: [
           {
             path: 'https://www.baidu.com',

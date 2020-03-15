@@ -1,5 +1,5 @@
 <template>
-  <div class="countup-body">
+  <div class="countup-body view-body">
     <el-card class="box-card">
       <div slot="header" class="card-header">
         <span>数字动画组件</span>

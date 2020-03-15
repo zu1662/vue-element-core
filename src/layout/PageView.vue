@@ -1,11 +1,6 @@
 <template>
   <div class="page-view">
     <router-view />
-    <div class="footer">
-      <div class="copyright">
-        Copyright &copy; zu1662
-      </div>
-    </div>
   </div>
 </template>
 
@@ -18,6 +13,7 @@ export default {
 
 <style lang='less' scoped>
   .page-view {
-    padding: 2rem;
+    width: 100%;
+    height: 100%;
   }
 </style>

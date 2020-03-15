@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="view-body">
      <water-mark
       class="text-container"
       style="line-height: 30px;"

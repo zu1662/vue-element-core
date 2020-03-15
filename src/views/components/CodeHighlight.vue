@@ -1,5 +1,5 @@
 <template>
-  <div class="hightlight-body">
+  <div class="hightlight-body view-body">
     <div class="intro">
       <h2>使用 <el-link type="primary" href="https://highlightjs.org/" target="_blank">highlightjs</el-link> 设置 code展示效果。</h2>
     </div>

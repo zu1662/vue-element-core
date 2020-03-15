@@ -2,7 +2,7 @@
   <el-container class="login-container">
     <div class="login-header">
       <div class="logo">
-        <svg-icon name="logo" class="login-svg" style="margin-right:10px"></svg-icon>
+        <img src="@/assets/logo.png" class="login-svg" style="margin-right:10px"/>
       </div>
       <div class="title">{{$t('user.loginTitle')}}</div>
     </div>
@@ -141,7 +141,7 @@ export default {
     height: 100%;
     min-height: @min-height;
     overflow-x: hidden;
-    background-image: linear-gradient(-45deg,#409EFF 10%,#004eff);
+    background-image: linear-gradient(-45deg,#409EFF 10%,#67C23A);
     box-shadow: 0 6px 8px 0 rgba(0,0,0,.1);
   }
   .login-header {
@@ -153,10 +153,9 @@ export default {
     height: @header-height;
     color: #fff;
     .logo {
-      height: 100%;
       .login-svg {
-        width: 15rem;
-        height: @header-height;
+        width: 3rem;
+        height: 3rem;
       }
     }
     .title {

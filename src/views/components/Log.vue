@@ -1,5 +1,5 @@
 <template>
-  <div class="log-body">
+  <div class="log-body view-body">
     <h1>打开控制台，查看效果</h1>
     <div class="item">
       <h2>$log.capsule</h2>
