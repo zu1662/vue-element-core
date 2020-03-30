@@ -11,7 +11,24 @@ const vueConfig = {
     plugins: [
       // Ignore all locale files of moment.js
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
-    ]
+    ],
+    // 关闭 webpack 的性能提示
+    performance: {
+      hints: false
+    }
+    // 或者使用以下方式
+    // 警告 webpack 的性能提示
+    // performance: {
+    //   hints: 'warning',
+    //   // 入口起点的最大体积
+    //   maxEntrypointSize: 5000000,
+    //   // 生成文件的最大体积
+    //   maxAssetSize: 3000000,
+    //   // 只给出 js 文件的性能提示
+    //   assetFilter: function (assetFilename) {
+    //     return assetFilename.endsWith('.js')
+    //   }
+    // }
   },
 
   chainWebpack: (config) => {
@@ -55,6 +72,11 @@ const vueConfig = {
     }
   },
   css: {
+    // 是否使用css分离插件 ExtractTextPlugin
+    extract: false,
+    // 开启 CSS source maps?
+    sourceMap: false,
+    // css预设器配置项
     loaderOptions: {
       less: {
         modifyVars: {
@@ -70,12 +92,14 @@ const vueConfig = {
   },
 
   devServer: {
+    // 设置远程可以用dev模式
+    // disableHostCheck: true,
     // development server port 8000
     port: 8000
     // If you want to turn on the proxy, please remove the mockjs /src/main.jsL11
     // proxy: {
     //   '/api': {
-    //     target: 'https://mock.ihx.me/mock/5baf3052f7da7e07e04a5116/antd-pro',
+    //     target: 'http://127.0.0.1:8081',
     //     ws: false,
     //     changeOrigin: true
     //   }
